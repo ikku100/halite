@@ -1,15 +1,17 @@
+import copy
+import itertools
 import math
 import time
 
-from hlt import NORTH, SOUTH, WEST, EAST, Move, STILL, Location
-from ikku100_02 import gameMap, myID
+from hlt import NORTH, SOUTH, WEST, EAST, Move, STILL, Location, GameMap, MOVES, MOVES_STRINGS
 
-MOVES = ["STILL","NORTH","EAST","SOUTH","WEST"]
+# from ikku100_02 import gameMap, myID
+
 timestr = time.strftime("%Y%m%d-%H%M%S")
 logFile = open("geographic_utils_" + timestr + ".log", 'w')
 
 def moveToString(move):
-    return move.loc.toString() + MOVES[move.direction]
+    return str(move.loc) + MOVES_STRINGS[move.direction]
 
 
 def xYToString(x, y):
@@ -48,11 +50,10 @@ def moveAwayFromCenterUsingDistance(location, myX, myY, dX, dY):
         return EAST if dX > 0 else WEST
 
 
-def createMove(location, myX, myY):
+def createMove(gameMap, location, site, myX, myY):
     logFile.write("\nmove (" + str(location.x) + ", " + str(location.y) + ").\t")
     logFile.write(xYToString(*distanceToCenter(location, myX, myY)))
-    logFile.write("moveAwayFromCenterUsingDistance:" + MOVES[moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))])
-    site = gameMap.getSite(location)
+    logFile.write("moveAwayFromCenterUsingDistance:" + MOVES_STRINGS[moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))])
     # for d in CARDINALS:
     #     neighbour_site = gameMap.getSite(location, d)
     #     if neighbour_site.owner != myID and neighbour_site.strength < site.strength:
@@ -82,7 +83,7 @@ def distance(a, b):
     return math.sqrt((a.y - b.y) * (a.y - b.y) + (a.x - b.x) * (a.x - b.x))
 
 
-def myCenter():
+def myCenter(gameMap, myID):
     # find center by adding up sum of strenght of x and y separately
     sumX = 0
     sumY = 0
@@ -93,18 +94,88 @@ def myCenter():
             newCenter = Location(xC, yC)
             if gameMap.getSite(newCenter).owner != myID:
                 continue
-            distanceSum = calculate_distance_sum(newCenter)
+            distanceSum = calculate_distance_sum(myID, newCenter)
             if distanceSum < minDistanceSum:
                 bestCenter = newCenter
     return bestCenter
 
 
-def calculate_distance_sum(newCenter):
+def calculate_distance_sum(gameMap, myID, newCenter):
     distance_sum = 0
     for y in range(gameMap.height):
         for x in range(gameMap.width):
             location = Location(x, y)
             if gameMap.getSite(location).owner == myID:
-                # logFile.write(str(x) + "," + str(y) + ", += " + str(location.x + gameMap.width ) + ", " + str(location.y + gameMap.height) + "\n")
+                # logFile.write(str(x) + "," + str(y) + ", += " + str(location.x + gameMap.width ) +
+                # ", " + str(location.y + gameMap.height) + "\n")
                 distance_sum += gameMap.getDistance(location, newCenter)
     return distance_sum
+
+
+def every_site_i_own():
+    return ['a', 'b']
+
+
+def get_all_moves_for_n_locations(n):
+    return itertools.product(MOVES, repeat=n)
+
+
+def create_all_next_moves(all_my_sites):
+    # return zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites)))
+    # return map(Move, zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites))))
+    all_my_sites = list(all_my_sites)
+    moves_sets = []
+    for moves in get_all_moves_for_n_locations(sum(1 for x in all_my_sites)):
+        new_moves = []
+        for site, move in zip(all_my_sites, moves):
+            new_moves.append(Move(site, move))
+        moves_sets.append(new_moves)
+    return moves_sets
+    # return map(Move, zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites))))
+
+
+
+def find_optimal_moves_for_this_turn(start_game_map: GameMap):
+    """' Returns the pair best_moves, score """
+    max_score = 0
+    best_moves = None
+    for moves in create_all_next_moves(start_game_map.my_sites()):
+        game_map = copy.deepcopy(start_game_map)
+        if not isinstance(moves, list):
+            moves = [moves]
+        # print(game_map)
+        game_map.evolve_assuming_no_enemy(moves)
+        # print(game_map)
+        score = game_map.my_total_production() + game_map.my_total_strength() * 0.5
+        if score > max_score:
+            print("found something better in end state:")
+            print(game_map)
+            best_moves = moves
+            max_score = score
+    return best_moves, max_score
+
+
+def find_optimal_moves(start_game_map, n_steps):
+    if n_steps == 1:
+        return find_optimal_moves_for_this_turn(start_game_map)
+    max_score = 0
+    best_moves = None
+    for moves in create_all_next_moves(start_game_map.my_sites()):
+        game_map = copy.deepcopy(start_game_map)
+        print(game_map)
+        game_map.evolve_assuming_no_enemy(moves)
+        print(game_map)
+        second_moves, end_score = find_optimal_moves(game_map, n_steps - 1)
+        if end_score > max_score:
+            max_score = end_score
+            best_moves = (moves, second_moves)
+    return best_moves, max_score
+
+
+def moves_multiple_turns_to_string(moves_per_turn):
+    result = ""
+    for turn in moves_per_turn:
+        for move in turn:
+            result += str(move) + ", "
+        result += '\n'
+    return result
