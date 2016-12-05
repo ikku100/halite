@@ -1,4 +1,6 @@
+import timeit
 import unittest
+from datetime import datetime
 from unittest.mock import Mock
 
 import geographic_utils
@@ -64,8 +66,31 @@ class TestGeographicUtils(unittest.TestCase):
     def test_create_step_tree_depth_2(self):
         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_game_map, 2)
         # print(*map(str, optimal_moves), best_score)
+        # i have to write equals operators for Move and Location...
+        # self.assertEquals(optimal_moves[0][0].direction, hlt.NORTH)
+        # self.assertListEqual(optimal_moves[1], [hlt.Move(hlt.Location(2, 1), hlt.EAST), hlt.Move(hlt.Location(2, 2),  hlt.STILL)])
         print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
         print(best_score)
+        geographic_utils.play_my_moves(self.start_game_map, optimal_moves)
+
+    def measure_speed_optimal_solution(self, n):
+        start = datetime.now()
+        geographic_utils.find_optimal_moves(self.start_game_map, n)
+        end = datetime.now()
+        return str(end - start)
+
+    def test_speed_search(self):
+        for n in range(1,4):
+            print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
+        # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_game_map, 2)))
+        # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_game_map, 3)))
+
+    def dont_test_create_many_steps(self):
+        optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_game_map, 5)
+        print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
+        print(best_score)
+        geographic_utils.play_my_moves(self.start_game_map, optimal_moves)
+
 
 if __name__ == '__main__':
     unittest.main()

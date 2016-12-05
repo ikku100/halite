@@ -1,0 +1,13 @@
+Without any copy optimizations 
+
+	Time needed for 1: 0:00:00.048002
+	Time needed for 2: 0:00:00.784018
+	Time needed for 3: 0:00:51.134909
+	Time needed for 1: 0:00:00.035999
+	Time needed for 2: 0:00:00.904021
+	Time needed for 3: 0:00:56.415017
+
+Without copy location in getSite if STILL
+	Time needed for 1: 0:00:00.027998
+	Time needed for 2: 0:00:00.604017
+	Time needed for 3: 0:00:36.987590

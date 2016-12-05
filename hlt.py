@@ -44,6 +44,19 @@ class Location:
         self.x = x
         self.y = y
 
+    def __deepcopy__(self, memo):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        # for k, v in self.__dict__.items():
+        #     setattr(result, k, deepcopy(v, memo))
+        result.x = self.x
+        result.y = self.y
+        return result
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
     def __str__(self):
         return "(" + str(self.x) + ", " + str(self.y) + ")"
 
@@ -67,6 +80,10 @@ class Move:
 
     def __str__(self):
         return str(self.loc) + ": " + MOVES_STRINGS[self.direction]
+
+    def __eq__(self, other):
+        return self.loc == other.loc and self.direction == other.direction
+
 
 class GameMap:
     def __init__(self, width = 0, height = 0, numberOfPlayers = 0):
@@ -136,7 +153,58 @@ class GameMap:
                     l.x -= 1
         return l
 
+    def getCoords(self, x, y, direction):
+        if direction != STILL:
+            if direction == NORTH:
+                if y == 0:
+                    y = self.height - 1
+                else:
+                    y -= 1
+            elif direction == EAST:
+                if x == self.width - 1:
+                    x = 0
+                else:
+                    x += 1
+            elif direction == SOUTH:
+                if y == self.height - 1:
+                    y = 0
+                else:
+                    y += 1
+            elif direction == WEST:
+                if x == 0:
+                    x = self.width - 1
+                else:
+                    x -= 1
+        return x, y
+
+    def getLocationFewerCopies(self, loc, direction):
+        if direction != STILL:
+            l = copy.deepcopy(loc)
+            if direction == NORTH:
+                if l.y == 0:
+                    l.y = self.height - 1
+                else:
+                    l.y -= 1
+            elif direction == EAST:
+                if l.x == self.width - 1:
+                    l.x = 0
+                else:
+                    l.x += 1
+            elif direction == SOUTH:
+                if l.y == self.height - 1:
+                    l.y = 0
+                else:
+                    l.y += 1
+            elif direction == WEST:
+                if l.x == 0:
+                    l.x = self.width - 1
+                else:
+                    l.x -= 1
+        return loc
+
     def getSite(self, l, direction = STILL):
+        if direction == STILL:
+            return self.contents[l.y][l.x]
         l = self.getLocation(l, direction)
         return self.contents[l.y][l.x]
 

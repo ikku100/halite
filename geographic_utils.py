@@ -148,8 +148,8 @@ def find_optimal_moves_for_this_turn(start_game_map: GameMap):
         # print(game_map)
         score = game_map.my_total_production() + game_map.my_total_strength() * 0.5
         if score > max_score:
-            print("found something better in end state:")
-            print(game_map)
+            # print("found something better in end state:")
+            # print(game_map)
             best_moves = moves
             max_score = score
     return best_moves, max_score
@@ -162,9 +162,9 @@ def find_optimal_moves(start_game_map, n_steps):
     best_moves = None
     for moves in create_all_next_moves(start_game_map.my_sites()):
         game_map = copy.deepcopy(start_game_map)
-        print(game_map)
+        # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
-        print(game_map)
+        # print(game_map)
         second_moves, end_score = find_optimal_moves(game_map, n_steps - 1)
         if end_score > max_score:
             max_score = end_score
@@ -179,3 +179,14 @@ def moves_multiple_turns_to_string(moves_per_turn):
             result += str(move) + ", "
         result += '\n'
     return result
+
+
+def play_my_moves(game_map, moves_per_turn):
+    turn = 0
+    print ("Turn " + str(turn))
+    print(game_map)
+    for moves in moves_per_turn:
+        turn += 1
+        game_map.evolve_assuming_no_enemy(moves)
+        print("Turn " + str(turn))
+        print(game_map)
