@@ -11,3 +11,16 @@ Without copy location in getSite if STILL
 	Time needed for 1: 0:00:00.027998
 	Time needed for 2: 0:00:00.604017
 	Time needed for 3: 0:00:36.987590
+With deepcopy on Location
+	Time needed for 1: 0:00:00.004003
+	Time needed for 2: 0:00:00.079053
+	Time needed for 3: 0:00:06.797596
+Just ints, no Location
+	Time needed for 1: 0:00:00.006004
+	Time needed for 2: 0:00:00.091561
+	Time needed for 3: 0:00:06.764152
+
+
+
+
+C:\Users\ikku100\Downloads\yappi-0.98-cp36-cp36m-win_amd64.whl

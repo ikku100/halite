@@ -5,6 +5,8 @@ from unittest.mock import Mock
 
 import geographic_utils
 import hlt
+import yappi
+import sys
 
 
 class TestGeographicUtils(unittest.TestCase):
@@ -34,7 +36,12 @@ class TestGeographicUtils(unittest.TestCase):
         # print(self.start_game_map)
         pass #works!
 
-    def test_create_all_next_moves(self):
+    def test_my_sites(self):
+        my_coordinates_list = self.start_game_map.my_coordinates_list()
+        self.assertEquals(len(list(my_coordinates_list)), 1)
+        self.assertEquals(self.start_game_map.my_coordinates_list().__next__(), (2,2))
+
+    def dont_test_create_all_next_moves(self):
         # geographic_utils.every_site_i_own = Mock(return_value=['a', 'b'])
         # geographic_utils.every_site_i_own.
         # print (str(list(geographic_utils.create_all_next_moves())))
@@ -50,11 +57,13 @@ class TestGeographicUtils(unittest.TestCase):
         me = hlt.Location(2,2)
         self.assertEquals(self.start_game_map.getSite(me).strength, 2)
         dont_move = hlt.Move(direction=hlt.STILL, loc=me)
-        self.start_game_map.evolve_assuming_no_enemy([dont_move])
+        self.start_game_map.evolve_assuming_no_enemy([[(me.x, me.y), hlt.STILL]])
         self.assertEquals(self.start_game_map.getSite(me).strength, 3)
         # print(self.start_game_map)
         self.assertEquals(self.start_game_map.my_number_of_sites(), 1)
         move_up = hlt.Move(me, hlt.NORTH)
+        move_up = [(me.x, me.y), hlt.NORTH]
+
         self.start_game_map.evolve_assuming_no_enemy([move_up])
         # print(self.start_game_map)
         self.assertEquals(self.start_game_map.my_number_of_sites(), 2)
@@ -81,7 +90,13 @@ class TestGeographicUtils(unittest.TestCase):
 
     def test_speed_search(self):
         for n in range(1,4):
+            yappi.start()
             print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
+            yappi.stop()
+            yappi.get_func_stats().print_all(columns= {0:("name",60), 1:("ncall", 8),
+                    2:("tsub", 8), 3: ("ttot", 8), 4:("tavg",8)})
+            # yappi.get_thread_stats().print_all()
+            yappi.clear_stats()
         # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_game_map, 2)))
         # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_game_map, 3)))
 

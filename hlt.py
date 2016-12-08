@@ -18,7 +18,7 @@ EAST = 2
 SOUTH = 3
 WEST = 4
 
-MOVES = (STILL, NORTH, SOUTH, WEST, EAST)
+MOVES = (STILL, NORTH, EAST, SOUTH, WEST)
 MOVES_STRINGS = ["STILL", "NORTH", "EAST", "SOUTH", "WEST"]
 
 DIRECTIONS = [a for a in range(0, 5)]
@@ -44,7 +44,7 @@ class Location:
         self.x = x
         self.y = y
 
-    def __deepcopy__(self, memo):
+    def __deepcopy__(self, memo={}):
         cls = self.__class__
         result = cls.__new__(cls)
         memo[id(self)] = result
@@ -72,6 +72,16 @@ class Site:
         self.strength = strength
         self.production = production
 
+    def __deepcopy__(self, memo={}):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        # for k, v in self.__dict__.items():
+        #     setattr(result, k, deepcopy(v, memo))
+        result.owner = self.owner
+        result.strength = self.strength
+        result.production = self.production
+        return result
 
 class Move:
     def __init__(self, loc=0, direction=0):
@@ -97,6 +107,24 @@ class GameMap:
             for x in range(0, self.width):
                 row.append(Site(0, 0, 0))
             self.contents.append(row)
+
+    def __deepcopy__(self, memo={}):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        # for k, v in self.__dict__.items():
+        #     setattr(result, k, deepcopy(v, memo))
+        result.width = self.width
+        result.height = self.height
+        result.my_id = self.my_id
+        result.contents = []
+        for y in range(0, self.height):
+            row = []
+            for x in range(0, self.width):
+                row.append(self.contents[y][x].__deepcopy__())
+            result.contents.append(row)
+        return result
+
 
     def set_my_id(self, id):
         self.my_id = id
@@ -129,7 +157,7 @@ class GameMap:
         return math.atan2(dy, dx)
 
     def getLocation(self, loc, direction):
-        l = copy.deepcopy(loc)
+        l = loc.__deepcopy__()#copy.deepcopy(loc)
         if direction != STILL:
             if direction == NORTH:
                 if l.y == 0:
@@ -153,7 +181,7 @@ class GameMap:
                     l.x -= 1
         return l
 
-    def getCoords(self, x, y, direction):
+    def get_new_coordinates(self, x, y, direction):
         if direction != STILL:
             if direction == NORTH:
                 if y == 0:
@@ -179,7 +207,7 @@ class GameMap:
 
     def getLocationFewerCopies(self, loc, direction):
         if direction != STILL:
-            l = copy.deepcopy(loc)
+            l = loc.__deepcopy__()
             if direction == NORTH:
                 if l.y == 0:
                     l.y = self.height - 1
@@ -208,6 +236,14 @@ class GameMap:
         l = self.getLocation(l, direction)
         return self.contents[l.y][l.x]
 
+    def get_site(self, x, y, direction = STILL):
+        if direction == STILL:
+            return self.contents[y][x]
+        x, y = self.get_new_coordinates(x, y, direction)
+        return self.contents[y][x]
+
+
+
     # todo cache this function! (does that even work with yield?)
     # @cache
     def players_sites(self, id):
@@ -216,24 +252,37 @@ class GameMap:
                 if self.contents[y][x].owner == id:
                     yield Location(x, y)
 
+    def players_coordinates_list(self, id):
+        for y in range(self.height):
+            for x in range(self.width):
+                if self.contents[y][x].owner == id:
+                    yield x, y
+
     def my_sites(self):
         return self.players_sites(self.my_id)
 
-    def my_number_of_sites(self):
-        return sum(1 for x in self.my_sites())
+    def my_coordinates_list(self):
+        return self.players_coordinates_list(self.my_id)
 
-    def evolve_assuming_no_enemy(self, moves):
-        for move in moves:
-            if move.direction is STILL:
-                self.getSite(move.loc).strength += self.getSite(move.loc).production
+    def my_number_of_sites(self):
+        # return sum(1 for x in self.my_sites())
+        return sum(1 for x in self.my_coordinates_list())
+
+    def evolve_assuming_no_enemy(self, moves_as_coordinates_direction_list):
+        for xy, direction in moves_as_coordinates_direction_list:
+            x, y = xy
+
+            original_site = self.get_site(x, y)
+            if direction is STILL:
+                original_site.strength += original_site.production
                 continue
-            target_site = self.getSite(move.loc, move.direction)
-            if self.getSite(move.loc).strength < target_site.strength:
-                target_site.strength -= self.getSite(move.loc).strength
+            target_site = self.get_site(x, y, direction)
+            if original_site.strength < target_site.strength:
+                target_site.strength -= original_site.strength
             else: # site gets overtaken!
-                target_site.strength = self.getSite(move.loc).strength - target_site.strength
+                target_site.strength = original_site.strength - target_site.strength
                 target_site.owner = self.my_id
-                self.getSite(move.loc).strength = 0
+                original_site.strength = 0
 
     def change_portion_of_map(self, change_type: SiteValueTypes, value, ranghe: Range):
         for x in range(ranghe.x0, ranghe.x1 + 1):
@@ -286,14 +335,13 @@ class GameMap:
 
     def my_total_strength(self):
         sum = 0
-        for site in self.my_sites():
-            sum += self.getSite(site).strength
+        for x, y in self.my_coordinates_list():
+            sum += self.get_site(x, y).strength
         return sum
 
     def my_total_production(self):
         sum = 0
-        for site in self.my_sites():
-            sum += self.getSite(site).production
+        for x, y in self.my_coordinates_list():
+            sum += self.get_site(x, y).production
         return sum
-        # return sum(self.getSite(next(self.my_sites(), None)).production)
 

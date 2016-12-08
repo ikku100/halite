@@ -123,12 +123,13 @@ def get_all_moves_for_n_locations(n):
 def create_all_next_moves(all_my_sites):
     # return zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites)))
     # return map(Move, zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites))))
-    all_my_sites = list(all_my_sites)
+    all_my_sites = list(all_my_sites)  # I'm going to reuse all_my_sites so either need to recreate the generator
+    # (not an option here) or get its contents
     moves_sets = []
     for moves in get_all_moves_for_n_locations(sum(1 for x in all_my_sites)):
         new_moves = []
         for site, move in zip(all_my_sites, moves):
-            new_moves.append(Move(site, move))
+            new_moves.append((site, move))
         moves_sets.append(new_moves)
     return moves_sets
     # return map(Move, zip(itertools.repeat(all_my_sites), get_all_moves_for_n_locations(sum(1 for x in all_my_sites))))
@@ -139,10 +140,9 @@ def find_optimal_moves_for_this_turn(start_game_map: GameMap):
     """' Returns the pair best_moves, score """
     max_score = 0
     best_moves = None
-    for moves in create_all_next_moves(start_game_map.my_sites()):
+    # for moves in create_all_next_moves(start_game_map.my_sites()):
+    for moves in create_all_next_moves(start_game_map.my_coordinates_list()):
         game_map = copy.deepcopy(start_game_map)
-        if not isinstance(moves, list):
-            moves = [moves]
         # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
         # print(game_map)
@@ -160,8 +160,9 @@ def find_optimal_moves(start_game_map, n_steps):
         return find_optimal_moves_for_this_turn(start_game_map)
     max_score = 0
     best_moves = None
-    for moves in create_all_next_moves(start_game_map.my_sites()):
-        game_map = copy.deepcopy(start_game_map)
+    for moves in create_all_next_moves(start_game_map.my_coordinates_list()):
+        game_map = start_game_map.__deepcopy__()#copy.deepcopy(start_game_map)
+        # game_map = copy.deepcopy(start_game_map)
         # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
         # print(game_map)
