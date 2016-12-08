@@ -74,13 +74,22 @@ class TestGeographicUtils(unittest.TestCase):
 
     def test_create_step_tree_depth_2(self):
         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_game_map, 2)
+        self.assertEquals(best_score, 4.5)
+        self.assertEquals(optimal_moves, [[((2, 2), 1)], [((2, 1), 2), ((2, 2), 0)]])
+        # print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
+        # print(best_score)
+        # geographic_utils.play_my_moves(self.start_game_map, optimal_moves)
+
+    def test_create_step_tree_depth_3(self):
+        optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_game_map, 3)
         # print(*map(str, optimal_moves), best_score)
         # i have to write equals operators for Move and Location...
-        # self.assertEquals(optimal_moves[0][0].direction, hlt.NORTH)
-        # self.assertListEqual(optimal_moves[1], [hlt.Move(hlt.Location(2, 1), hlt.EAST), hlt.Move(hlt.Location(2, 2),  hlt.STILL)])
+        self.assertEquals(best_score, 6.5)
+        self.assertEquals(optimal_moves,  [[((2, 2), 1)], [((2, 1), 2), ((2, 2), 0)], [((2, 1), 0), ((3, 1), 0), ((2, 2), 0)]])
         print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
         print(best_score)
         geographic_utils.play_my_moves(self.start_game_map, optimal_moves)
+
 
     def measure_speed_optimal_solution(self, n):
         start = datetime.now()
@@ -89,7 +98,7 @@ class TestGeographicUtils(unittest.TestCase):
         return str(end - start)
 
     def test_speed_search(self):
-        for n in range(1,4):
+        for n in range(1,5):
             yappi.start()
             print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
             yappi.stop()

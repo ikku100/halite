@@ -137,12 +137,12 @@ def create_all_next_moves(all_my_sites):
 
 
 def find_optimal_moves_for_this_turn(start_game_map: GameMap):
-    """' Returns the pair best_moves, score """
+    """' Returns the pair best_moves, score. best_moves is a tuple of ((x,y), direction) pairs"""
     max_score = 0
     best_moves = None
     # for moves in create_all_next_moves(start_game_map.my_sites()):
     for moves in create_all_next_moves(start_game_map.my_coordinates_list()):
-        game_map = copy.deepcopy(start_game_map)
+        game_map = start_game_map.__deepcopy__()
         # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
         # print(game_map)
@@ -152,7 +152,7 @@ def find_optimal_moves_for_this_turn(start_game_map: GameMap):
             # print(game_map)
             best_moves = moves
             max_score = score
-    return best_moves, max_score
+    return [best_moves], max_score
 
 
 def find_optimal_moves(start_game_map, n_steps):
@@ -166,10 +166,10 @@ def find_optimal_moves(start_game_map, n_steps):
         # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
         # print(game_map)
-        second_moves, end_score = find_optimal_moves(game_map, n_steps - 1)
+        future_moves_per_turn, end_score = find_optimal_moves(game_map, n_steps - 1)
         if end_score > max_score:
             max_score = end_score
-            best_moves = (moves, second_moves)
+            best_moves = [moves] + future_moves_per_turn
     return best_moves, max_score
 
 
