@@ -98,7 +98,7 @@ class TestGeographicUtils(unittest.TestCase):
         return str(end - start)
 
     def test_speed_search(self):
-        for n in range(1,5):
+        for n in range(1,4):
             yappi.start()
             print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
             yappi.stop()

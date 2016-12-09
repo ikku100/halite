@@ -2,6 +2,7 @@ import random
 import math
 import copy
 from enum import Enum
+from collections import namedtuple
 
 #
 # To find optimal opening moves, just scan the state space till I run out of time? Or at least figure out how many
@@ -27,6 +28,8 @@ CARDINALS = [a for a in range(1, 5)]
 ATTACK = 0
 STOP_ATTACK = 1
 
+
+
 class Range:
     def __init__(self, x0, y0, x1, y1):
         self.x0 = x0
@@ -38,8 +41,9 @@ class Range:
 def make_range(x1, y1):
     return Range(0, 0, x1, y1)
 
+Location = namedtuple('Location', 'x y')
 
-class Location:
+class LocationOld:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -66,7 +70,10 @@ class SiteValueTypes(Enum):
     strength = 1,
     production = 2
 
-class Site:
+# Site = namedtuple('Site', ['owner', 'strength', 'production'])
+Site = namedtuple('Site', 'owner strength production')
+
+class SiteOld:
     def __init__(self, owner=0, strength=0, production=0):
         self.owner = owner
         self.strength = strength
@@ -121,7 +128,7 @@ class GameMap:
         for y in range(0, self.height):
             row = []
             for x in range(0, self.width):
-                row.append(self.contents[y][x].__deepcopy__())
+                row.append(self.contents[y][x]) #.__deepcopy__())
             result.contents.append(row)
         return result
 
@@ -274,7 +281,8 @@ class GameMap:
 
             original_site = self.get_site(x, y)
             if direction is STILL:
-                original_site.strength += original_site.production
+                # original_site.strength += original_site.production
+                original_site = Site(original_site.owner, strength + original_site.production, original_site.production)
                 continue
             target_site = self.get_site(x, y, direction)
             if original_site.strength < target_site.strength:
@@ -287,12 +295,16 @@ class GameMap:
     def change_portion_of_map(self, change_type: SiteValueTypes, value, ranghe: Range):
         for x in range(ranghe.x0, ranghe.x1 + 1):
             for y in range(ranghe.y0, ranghe.y1 + 1):
+                old_site = self.contents[y][x]
                 if change_type is SiteValueTypes.strength:
-                    self.contents[y][x].strength = value
+                    # self.contents[y][x].strength = value
+                    self.contents[y][x] = Site(old_site.owner, value, old_site.production)
                 elif change_type is SiteValueTypes.production:
-                    self.contents[y][x].production = value
+                    # self.contents[y][x].production = value
+                    self.contents[y][x] = Site(old_site.owner, old_site.strength, value)
                 else:
-                    self.contents[y][x].owner = value
+                    # self.contents[y][x].owner = value
+                    self.contents[y][x] = Site(value, old_site.strength, old_site.production)
 
     def iterator(self):
         for y in range(self.height):
