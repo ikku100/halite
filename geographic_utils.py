@@ -8,7 +8,7 @@ from hlt import NORTH, SOUTH, WEST, EAST, Move, STILL, Location, GameMap, MOVES,
 # from ikku100_02 import gameMap, myID
 
 timestr = time.strftime("%Y%m%d-%H%M%S")
-logFile = open("geographic_utils_" + timestr + ".log", 'w')
+# logFile = open("geographic_utils_" + timestr + ".log", 'w')
 
 def moveToString(move):
     return str(move.loc) + MOVES_STRINGS[move.direction]
@@ -51,9 +51,9 @@ def moveAwayFromCenterUsingDistance(location, myX, myY, dX, dY):
 
 
 def createMove(gameMap, location, site, myX, myY):
-    logFile.write("\nmove (" + str(location.x) + ", " + str(location.y) + ").\t")
-    logFile.write(xYToString(*distanceToCenter(location, myX, myY)))
-    logFile.write("moveAwayFromCenterUsingDistance:" + MOVES_STRINGS[moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))])
+    # logFile.write("\nmove (" + str(location.x) + ", " + str(location.y) + ").\t")
+    # logFile.write(xYToString(*distanceToCenter(location, myX, myY)))
+    # logFile.write("moveAwayFromCenterUsingDistance:" + MOVES_STRINGS[moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))])
     # for d in CARDINALS:
     #     neighbour_site = gameMap.getSite(location, d)
     #     if neighbour_site.owner != myID and neighbour_site.strength < site.strength:
@@ -94,7 +94,7 @@ def myCenter(gameMap, myID):
             newCenter = Location(xC, yC)
             if gameMap.getSite(newCenter).owner != myID:
                 continue
-            distanceSum = calculate_distance_sum(myID, newCenter)
+            distanceSum = calculate_distance_sum(gameMap, myID, newCenter)
             if distanceSum < minDistanceSum:
                 bestCenter = newCenter
     return bestCenter

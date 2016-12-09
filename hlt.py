@@ -41,9 +41,9 @@ class Range:
 def make_range(x1, y1):
     return Range(0, 0, x1, y1)
 
-Location = namedtuple('Location', 'x y')
+# Location = namedtuple('Location', 'x y')
 
-class LocationOld:
+class Location:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -71,9 +71,9 @@ class SiteValueTypes(Enum):
     production = 2
 
 # Site = namedtuple('Site', ['owner', 'strength', 'production'])
-Site = namedtuple('Site', 'owner strength production')
+# Site = namedtuple('Site', 'owner strength production')
 
-class SiteOld:
+class Site:
     def __init__(self, owner=0, strength=0, production=0):
         self.owner = owner
         self.strength = strength
@@ -282,7 +282,7 @@ class GameMap:
             original_site = self.get_site(x, y)
             if direction is STILL:
                 # original_site.strength += original_site.production
-                original_site = Site(original_site.owner, strength + original_site.production, original_site.production)
+                original_site = Site(original_site.owner, original_site.strength + original_site.production, original_site.production)
                 continue
             target_site = self.get_site(x, y, direction)
             if original_site.strength < target_site.strength:
@@ -292,7 +292,7 @@ class GameMap:
                 target_site.owner = self.my_id
                 original_site.strength = 0
 
-    def change_portion_of_map(self, change_type: SiteValueTypes, value, ranghe: Range):
+    def change_portion_of_map(self, change_type, value, ranghe):
         for x in range(ranghe.x0, ranghe.x1 + 1):
             for y in range(ranghe.y0, ranghe.y1 + 1):
                 old_site = self.contents[y][x]

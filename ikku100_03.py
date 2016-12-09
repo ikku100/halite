@@ -13,29 +13,12 @@ logFile = open(botName + "game" + timestr + ".log", 'w')
 
 from geographic_utils import moveToString, createMove, myCenter, find_optimal_moves
 
+
 turn = 0
-gameMap = getFrame()
-optimal_moves, best_score = find_optimal_moves(gameMap, 3)
-moves_per_turn = []
-for turn_moves in optimal_moves:
-    moves = []
-    for move_tuple in turn_moves:
-        move = Move(Location(move_tuple[0][0], move_tuple[0][1]), move_tuple[1])
-        moves.append(move)
-    moves_per_turn.append(moves)
-
-for turn in moves_per_turn:
-    print turn
-
 while True:
-
     turn += 1
     moves = []
     gameMap = getFrame()
-
-    if turn == 1:
-
-
     my_center = myCenter(gameMap, myID)
     myX, myY = my_center.x, my_center.y
     logFile.write("\nTurn " + str(turn) + ". My center is: " + str(myX) + ", " + str(myY) + "\n")
