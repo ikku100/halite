@@ -11,12 +11,17 @@ import sys
 from collections import namedtuple
 from itertools import chain, zip_longest
 import numpy
+import numpy as np
+import time
 
 def grouper(iterable, n, fillvalue=None):
     "Collect data into fixed-length chunks or blocks"
     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx"
     args = [iter(iterable)] * n
     return zip_longest(*args, fillvalue=fillvalue)
+
+Location = namedtuple('Location', 'x y')
+Range = namedtuple('Range', "x1 y1 x2 y2")
 
 # Because Python uses zero-based indexing, the cardinal directions have a different mapping in this Python starterbot
 # framework than that used by the Halite game environment.  This simplifies code in several places.  To accommodate
@@ -38,17 +43,31 @@ Move = namedtuple('Move', 'square direction')
 
 
 class GameMap:
-    def __init__(self, size_string, production_string, map_string=None):
+    def __init__(self, playerID, size_string, production_string, map_string=None):
+        self.playerID = playerID
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        self.logfile = open(str(playerID) + "array_hlt" + timestr + ".log", 'w')
+
         self.width, self.height = tuple(map(int, size_string.split()))
-        self.production = tuple(tuple(map(int, substring)) for substring in grouper(production_string.split(), self.width))
-        self.contents = None
+
+        # self.production = tuple(tuple(map(int, substring)) for substring in grouper(production_string.split(), self.width))
         self.get_frame(map_string)
-        self.starting_player_count = len(set(square.owner for square in self)) - 1
+        # o = []
+        # for e in np.nditer(self.owners):
+        #     o.append( e)
+        # print(set(o))
+        self.starting_player_count = len(np.unique(self.owners)) - 1
 
         # self.str = numpy.empty()
-        self.prod = numpy.matrix(list(map(int, row) for row in grouper(production_string.split(), self.width)))
-        print(self.prod)
-        self.owners = None
+        self.prod = np.fromstring(production_string, dtype=int, sep=' ')
+        self.prod = self.prod.reshape(self.height, self.width)
+        self.log(self.prod)
+
+    def log(self, obj):
+        self.logfile.write(str(obj))
+
+    def set_logfile(self, logfile):
+        self.logfile = logfile
 
     def get_frame(self, map_string=None):
         "Updates the map information from the latest frame provided by the Halite game environment."
@@ -61,25 +80,14 @@ class GameMap:
             owner = int(split_string.pop(0))
             owners.extend([owner] * counter)
         assert len(owners) == self.width * self.height
+        self.owners = np.array(owners, dtype=np.int16)
+        self.owners = self.owners.reshape(self.height, self.width)
+
         assert len(split_string) == self.width * self.height
-        self.contents = [[Square(x, y, owner, strength, production)
-                          for x, (owner, strength, production)
-                          in enumerate(zip(owner_row, strength_row, production_row))]
-                         for y, (owner_row, strength_row, production_row)
-                         in enumerate(zip(grouper(owners, self.width),
-                                          grouper(map(int, split_string), self.width),
-                                          self.production))]
+        self.strength = np.array(split_string, dtype=np.int16)# fromstring(split_string, dtype=int, sep=' ')
+        self.strength = self.strength.reshape(self.height, self.width)
 
-        # for sq in self.contents:
-
-
-
-
-    def __iter__(self):
-        "Allows direct iteration over all squares in the GameMap instance."
-        return chain.from_iterable(self.contents)
-
-    def neighbors(self, square, n=1, include_self=False):
+    def neighbors(self, x, y, n=1, include_self=False):
         "Iterable over the n-distance neighbors of a given square.  For single-step neighbors, the enumeration index provides the direction associated with the neighbor."
         assert isinstance(include_self, bool)
         assert isinstance(n, int) and n > 0
@@ -87,12 +95,7 @@ class GameMap:
             combos = ((0, -1), (1, 0), (0, 1), (-1, 0), (0, 0))   # NORTH, EAST, SOUTH, WEST, STILL ... matches indices provided by enumerate(game_map.neighbors(square))
         else:
             combos = ((dx, dy) for dy in range(-n, n+1) for dx in range(-n, n+1) if abs(dx) + abs(dy) <= n)
-        return (self.contents[(square.y + dy) % self.height][(square.x + dx) % self.width] for dx, dy in combos if include_self or dx or dy)
-
-    def get_target(self, square, direction):
-        "Returns a single, one-step neighbor in a given direction."
-        dx, dy = ((0, -1), (1, 0), (0, 1), (-1, 0), (0, 0))[direction]
-        return self.contents[(square.y + dy) % self.height][(square.x + dx) % self.width]
+        return (self.owners[(y + dy) % self.height][(x + dx) % self.width] for dx, dy in combos if include_self or dx or dy)
 
     def get_distance(self, sq1, sq2):
         "Returns Manhattan distance between two squares."
@@ -117,7 +120,7 @@ def get_string():
 
 def get_init():
     playerID = int(get_string())
-    m = GameMap(get_string(), get_string())
+    m = GameMap(playerID, get_string(), get_string())
     return playerID, m
 
 

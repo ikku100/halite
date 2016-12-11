@@ -10,7 +10,24 @@ bot_name = path.splitext(__file__)[0]
 logFile = open(bot_name + "game" + timestr + ".log", 'w')
 
 
+def get_init():
+    i = 0
+    first_string = array_hlt.get_string()
+    playerID = int(first_string)
+    logFile.write(first_string)
+    logFile.write("gamemap is constructed with:\n" +  array_hlt.get_string() + "\nand\n" + array_hlt.get_string())
+    logFile.write("and first frame part 0:\n" + array_hlt.get_string())
+    logFile.write("and first frame part 1:\n" + array_hlt.get_string())
+
+
+
+get_init()
+array_hlt.send_init(bot_name)
+logFile.close()
+raise ("stop maar")
+
 myID, game_map = array_hlt.get_init()
+game_map.set_logfile(logFile)
 array_hlt.send_init(bot_name)
 
 
