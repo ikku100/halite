@@ -29,6 +29,9 @@ Range = namedtuple('Range', "x1 y1 x2 y2")
 # the send_frame function when communicating with the Halite game environment.
 
 NORTH, EAST, SOUTH, WEST, STILL = range(5)
+# MOVES = (STILL, NORTH, EAST, SOUTH, WEST)
+MOVES = (NORTH, EAST, SOUTH, WEST, STILL)
+MOVES_STRINGS = ["NORTH", "EAST", "SOUTH", "WEST", "STILL"]
 
 
 def opposite_cardinal(direction):
@@ -40,10 +43,16 @@ Square = namedtuple('Square', 'x y owner strength production')
 
 
 Move = namedtuple('Move', 'square direction')
-
+MoveSimple = namedtuple("MoveSimple", "location direction")
 
 class GameMap:
-    def __init__(self, playerID, size_string, production_string, map_string=None):
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def make_gamemap_from_strings(cls, playerID, size_string, production_string, map_string=None):
+        self = cls()
         self.playerID = playerID
         timestr = time.strftime("%Y%m%d-%H%M%S")
         self.logfile = open(str(playerID) + "array_hlt" + timestr + ".log", 'w')
@@ -62,6 +71,25 @@ class GameMap:
         self.prod = np.fromstring(production_string, dtype=int, sep=' ')
         self.prod = self.prod.reshape(self.height, self.width)
         self.log(self.prod)
+        return self
+
+    def __copy__(self):
+        newone = type(self)()
+        newone.playerID = self.playerID
+        newone.logfile = self.logfile
+        newone.width = self.width
+        newone.height = self.height
+        newone.prod = self.prod
+        newone.owners = self.owners
+        newone.strength = self.strength
+        return newone
+
+    def __deepcopy__(self, memo={}):
+        result = self.__copy__()
+        result.strength = self.strength.copy()
+        result.owners = self.owners.copy()
+        return result
+
 
     def log(self, obj):
         self.logfile.write(str(obj))
@@ -82,10 +110,13 @@ class GameMap:
         assert len(owners) == self.width * self.height
         self.owners = np.array(owners, dtype=np.int16)
         self.owners = self.owners.reshape(self.height, self.width)
+        self.owners = np.ndarray.swapaxes(self.owners, 0, 1)
+
 
         assert len(split_string) == self.width * self.height
         self.strength = np.array(split_string, dtype=np.int16)# fromstring(split_string, dtype=int, sep=' ')
         self.strength = self.strength.reshape(self.height, self.width)
+        self.strength = np.ndarray.swapaxes(self.strength, 0, 1)
 
     def neighbors(self, x, y, n=1, include_self=False):
         "Iterable over the n-distance neighbors of a given square.  For single-step neighbors, the enumeration index provides the direction associated with the neighbor."
@@ -103,10 +134,103 @@ class GameMap:
         dy = min(abs(sq1.y - sq2.y), sq1.y + self.height - sq2.y, sq2.y + self.height - sq1.y)
         return dx + dy
 
+    def __str__(self):
+        class colors:
+            HEADER = '\033[95m'
+            OKBLUE = '\033[94m'
+            OKGREEN = '\033[92m'
+            WARNING = '\033[93m'
+            FAIL = '\033[91m'
+            ENDC = '\033[0m'
+            BOLD = '\033[1m'
+            UNDERLINE = '\033[4m'
+
+        new_line_counter = 0
+        result = "Owners:\n"
+        result += np.array_str(self.owners)
+        result += "\nStrength:\n"
+        # for site in self.iterator():
+        #     if site.owner is self.my_id:
+        #         result += colors.OKGREEN + colors.UNDERLINE
+        #     result += str(site.strength) + colors.ENDC + " "
+        #     new_line_counter += 1
+        #     if new_line_counter is self.width:
+        #         result += '\n'
+        #         new_line_counter = 0
+        result += np.array_str(self.strength)
+        result += "\nProduction:\n"
+        result += np.array_str(self.prod)
+        result += "\n"
+        return result
+
+    def my_total_strength(self):
+        # sum = 0
+        # for x, y in self.my_coordinates_list():
+        #     sum += self.get_site(x, y).strength
+        return sum(self.strength[self.owners == self.playerID])
+
+    def my_total_production(self):
+        # sum = 0
+        # for x, y in self.my_coordinates_list():
+        #     sum += self.get_site(x, y).production
+        # return sum
+        return sum(self.prod[self.owners == self.playerID])
+
+    def get_new_coordinates(self, x, y, direction):
+        if direction != STILL:
+            if direction == NORTH:
+                if y == 0:
+                    y = self.height - 1
+                else:
+                    y -= 1
+            elif direction == EAST:
+                if x == self.width - 1:
+                    x = 0
+                else:
+                    x += 1
+            elif direction == SOUTH:
+                if y == self.height - 1:
+                    y = 0
+                else:
+                    y += 1
+            elif direction == WEST:
+                if x == 0:
+                    x = self.width - 1
+                else:
+                    x -= 1
+        return x, y
+
+    def get_location(self, location, direction=STILL):
+        if direction == STILL:
+            return location
+        x, y = self.get_new_coordinates(location.x, location.y, direction)
+        return Location(x, y)
+
+    def my_locations_list(self):
+        my_locs_in_array = numpy.argwhere(self.owners == self.playerID)
+        my_locs = list(map(tuple, my_locs_in_array))
+        # for e in my_locs_in_array:
+
+        return my_locs
+
+    def evolve_assuming_no_enemy(self, moves_as_coordinates_direction_list):
+        for location, direction in moves_as_coordinates_direction_list:
+            x, y = location
+            if direction is STILL:
+                self.strength[y, x] += self.prod[y, x]
+                continue
+            new_x, new_y = self.get_new_coordinates(x, y, direction)
+            if self.strength[y, x] < self.strength[new_y, new_x]:
+                self.strength[new_y, new_x] -= self.strength[y, x]
+            else:  # site gets overtaken!
+                self.strength[new_y, new_x] = self.strength[y, x] - self.strength[new_y, new_x]
+                self.owners[new_y, new_x] = self.playerID
+                self.strength[y, x] = 0
+
+
 #####################################################################################################################
 # Functions for communicating with the Halite game environment (formerly contained in separate module networking.py #
 #####################################################################################################################
-
 
 def send_string(s):
     sys.stdout.write(s)
@@ -120,7 +244,7 @@ def get_string():
 
 def get_init():
     playerID = int(get_string())
-    m = GameMap(playerID, get_string(), get_string())
+    m = make_gamemap_from_strings(playerID, get_string(), get_string())
     return playerID, m
 
 
@@ -131,13 +255,14 @@ def send_init(name):
 def translate_cardinal(direction):
     "Translate direction constants used by this Python-based bot framework to that used by the official Halite game environment."
     # Cardinal indexing used by this bot framework is
-    #~ NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3, STILL = 4
+    # ~ NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3, STILL = 4
     # Cardinal indexing used by official Halite game environment is
-    #~ STILL = 0, NORTH = 1, EAST = 2, SOUTH = 3, WEST = 4
-    #~ >>> list(map(lambda x: (x+1) % 5, range(5)))
-    #~ [1, 2, 3, 4, 0]
+    # ~ STILL = 0, NORTH = 1, EAST = 2, SOUTH = 3, WEST = 4
+    # ~ >>> list(map(lambda x: (x+1) % 5, range(5)))
+    # ~ [1, 2, 3, 4, 0]
     return (direction + 1) % 5
 
 
 def send_frame(moves):
-    send_string(' '.join(str(move.square.x) + ' ' + str(move.square.y) + ' ' + str(translate_cardinal(move.direction)) for move in moves))
+    send_string(' '.join(str(move.square.x) + ' ' + str(move.square.y) + ' ' + str(translate_cardinal(move.direction))
+                         for move in moves))
