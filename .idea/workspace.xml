@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddd67844-cdd3-4dbe-ad14-4e17bba124d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/array_geographic_utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_hlt.py" afterPath="$PROJECT_DIR$/array_hlt.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_array_hlt.py" afterPath="$PROJECT_DIR$/test_array_hlt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_geographic_utils.py" afterPath="$PROJECT_DIR$/test_geographic_utils.py" />
     </list>
     <ignored path="halite.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,12 +60,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="29">
+              <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding>
+                <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#351#1004#0" expanded="false" />
                 <element signature="e#466#495#0" expanded="false" />
                 <element signature="e#646#676#0" expanded="false" />
@@ -85,7 +84,6 @@
                 <element signature="e#3448#3671#0" expanded="false" />
                 <element signature="e#3448#3532#0" expanded="false" />
                 <element signature="e#3726#3743#0" expanded="false" />
-                <element signature="e#5287#5425#0" expanded="false" />
                 <element signature="e#5287#5334#0" expanded="false" />
                 <element signature="e#6245#6394#0" expanded="false" />
                 <element signature="e#6297#6376#0" expanded="false" />
@@ -156,11 +154,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_array_hlt.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_array_hlt.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="250">
+              <caret line="83" column="26" lean-forward="false" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
               <folding>
                 <element signature="e#16#31#0" expanded="true" />
               </folding>
@@ -194,45 +192,11 @@
       <file leaf-file-name="array_hlt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
+            <state relative-caret-position="179">
+              <caret line="216" column="48" lean-forward="false" selection-start-line="216" selection-start-column="48" selection-end-line="216" selection-end-column="48" />
               <folding>
-                <element signature="e#0#345#1" expanded="false" />
-                <element signature="e#525#707#0" expanded="false" />
-                <element signature="e#794#911#0" expanded="false" />
-                <element signature="e#1449#1555#0" expanded="false" />
-                <element signature="e#2326#2334#0" expanded="false" />
-                <element signature="e#3268#3296#0" expanded="false" />
-                <element signature="e#3342#3364#0" expanded="false" />
-                <element signature="e#3710#3834#0" expanded="false" />
-                <element signature="e#4446#5134#0" expanded="false" />
-                <element signature="e#5182#5442#0" expanded="false" />
-                <element signature="e#5475#6410#0" expanded="false" />
-                <element signature="e#5501#5740#0" expanded="false" />
-                <element signature="e#5886#5916#0" expanded="false" />
-                <element signature="e#6453#6626#0" expanded="false" />
-                <element signature="e#6453#6462#0" expanded="false" />
-                <element signature="e#6671#6863#0" expanded="false" />
-                <element signature="e#6671#6680#0" expanded="false" />
-                <element signature="e#6925#7573#0" expanded="false" />
-                <element signature="e#6960#7553#0" expanded="false" />
-                <element signature="e#6999#7098#0" expanded="false" />
-                <element signature="e#7151#7249#0" expanded="false" />
-                <element signature="e#7303#7402#0" expanded="false" />
-                <element signature="e#7455#7553#0" expanded="false" />
-                <element signature="e#7638#7793#0" expanded="false" />
-                <element signature="e#8100#8747#0" expanded="false" />
-                <element signature="e#8176#8747#0" expanded="false" />
-                <element signature="e#8243#8306#0" expanded="false" />
-                <element signature="e#8567#8744#0" expanded="false" />
-                <element signature="e#8747#8864#0" expanded="false" />
-                <element signature="e#9126#9195#0" expanded="false" />
-                <element signature="e#9220#9260#0" expanded="false" />
-                <element signature="e#9434#9451#0" expanded="false" />
-                <element signature="e#9493#9968#0" expanded="false" />
-                <element signature="e#9623#9672#0" expanded="false" />
-                <element signature="e#9998#10157#0" expanded="false" />
-                <element signature="e#10019#10155#0" expanded="false" />
+                <element signature="e#6990#7638#0" expanded="false" />
+                <element signature="e#7703#7858#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -355,6 +319,9 @@
       <find>z</find>
       <find>get_si</find>
       <find>start_game_map</find>
+      <find>swap</find>
+      <find>swapaxes</find>
+      <find>Test!</find>
     </findStrings>
     <replaceStrings>
       <replace>y</replace>
@@ -729,38 +696,45 @@
       <option name="project" value="LOCAL" />
       <updated>1481474728989</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="array_hlt and geo utils progress. Working on finding best moves. x and y are being swapped most likely">
+      <created>1482068816537</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1482068816537</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 39m 05s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 08m 22s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 39m 07s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 08m 28s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 39m 26s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 09m 51s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 39m 59s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 10m 29s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 42m 06s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 11m 05s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 43m 39s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 12m 08s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 43m 51s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 12m 43s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 43m 58s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 13m 15s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 44m 55s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 15m 06s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 13h 45m 25s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2016.12.18 at 14h 16m 52s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
   </component>
@@ -778,7 +752,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40690377" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40690377" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -823,7 +797,8 @@
     <MESSAGE value="a non working version with partly implemented namedtuples" />
     <MESSAGE value="working version again, now have alt_hlt, hlt and array_hlt. The latter is to be changed to use numpy" />
     <MESSAGE value="array_hlt works in parsing the map" />
-    <option name="LAST_COMMIT_MESSAGE" value="array_hlt works in parsing the map" />
+    <MESSAGE value="array_hlt and geo utils progress. Working on finding best moves. x and y are being swapped most likely" />
+    <option name="LAST_COMMIT_MESSAGE" value="array_hlt and geo utils progress. Working on finding best moves. x and y are being swapped most likely" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -867,7 +842,7 @@
           <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="86" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1425,66 +1400,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/array_hlt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
+        <state relative-caret-position="179">
+          <caret line="216" column="48" lean-forward="false" selection-start-line="216" selection-start-column="48" selection-end-line="216" selection-end-column="48" />
           <folding>
-            <element signature="e#0#345#1" expanded="false" />
-            <element signature="e#525#707#0" expanded="false" />
-            <element signature="e#794#911#0" expanded="false" />
-            <element signature="e#1449#1555#0" expanded="false" />
-            <element signature="e#2326#2334#0" expanded="false" />
-            <element signature="e#3268#3296#0" expanded="false" />
-            <element signature="e#3342#3364#0" expanded="false" />
-            <element signature="e#3710#3834#0" expanded="false" />
-            <element signature="e#4446#5134#0" expanded="false" />
-            <element signature="e#5182#5442#0" expanded="false" />
-            <element signature="e#5475#6410#0" expanded="false" />
-            <element signature="e#5501#5740#0" expanded="false" />
-            <element signature="e#5886#5916#0" expanded="false" />
-            <element signature="e#6453#6626#0" expanded="false" />
-            <element signature="e#6453#6462#0" expanded="false" />
-            <element signature="e#6671#6863#0" expanded="false" />
-            <element signature="e#6671#6680#0" expanded="false" />
-            <element signature="e#6925#7573#0" expanded="false" />
-            <element signature="e#6960#7553#0" expanded="false" />
-            <element signature="e#6999#7098#0" expanded="false" />
-            <element signature="e#7151#7249#0" expanded="false" />
-            <element signature="e#7303#7402#0" expanded="false" />
-            <element signature="e#7455#7553#0" expanded="false" />
-            <element signature="e#7638#7793#0" expanded="false" />
-            <element signature="e#8100#8747#0" expanded="false" />
-            <element signature="e#8176#8747#0" expanded="false" />
-            <element signature="e#8243#8306#0" expanded="false" />
-            <element signature="e#8567#8744#0" expanded="false" />
-            <element signature="e#8747#8864#0" expanded="false" />
-            <element signature="e#9126#9195#0" expanded="false" />
-            <element signature="e#9220#9260#0" expanded="false" />
-            <element signature="e#9434#9451#0" expanded="false" />
-            <element signature="e#9493#9968#0" expanded="false" />
-            <element signature="e#9623#9672#0" expanded="false" />
-            <element signature="e#9998#10157#0" expanded="false" />
-            <element signature="e#10019#10155#0" expanded="false" />
+            <element signature="e#6990#7638#0" expanded="false" />
+            <element signature="e#7703#7858#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="29">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding>
+            <element signature="e#0#11#0" expanded="true" />
             <element signature="e#351#1004#0" expanded="false" />
             <element signature="e#466#495#0" expanded="false" />
             <element signature="e#646#676#0" expanded="false" />
@@ -1502,10 +1434,19 @@
             <element signature="e#3448#3671#0" expanded="false" />
             <element signature="e#3448#3532#0" expanded="false" />
             <element signature="e#3726#3743#0" expanded="false" />
-            <element signature="e#5287#5425#0" expanded="false" />
             <element signature="e#5287#5334#0" expanded="false" />
             <element signature="e#6245#6394#0" expanded="false" />
             <element signature="e#6297#6376#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="83" column="26" lean-forward="false" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
+          <folding>
+            <element signature="e#16#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

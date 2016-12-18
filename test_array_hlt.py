@@ -1,12 +1,12 @@
 # import timeit
 import unittest
-# from datetime import datetime
+from datetime import datetime
 # from unittest.mock import Mock
 
 import array_hlt
 from array_hlt import Location as Location, MoveSimple as MoveSimple
 import array_geographic_utils
-# import yappi
+import yappi
 # import sys
 import numpy as np
 
@@ -50,52 +50,53 @@ class TestArrayHlt(unittest.TestCase):
         # print (str(list(geographic_utils.create_all_next_moves())))
         self.assertEquals(len(list(array_geographic_utils.create_all_next_moves((s for s in ['a', 'b'])))), 25)
 
-    def test_create_step_tree_depth_1(self):
+    def dont_test_create_step_tree_depth_1(self):
         optimal_moves, best_score = array_geographic_utils.find_optimal_moves(self.start_gamemap, 1)
         self.assertEquals(best_score, 2.5)
 
     def test_create_step_tree_depth_2(self):
         optimal_moves, best_score = array_geographic_utils.find_optimal_moves(self.start_gamemap, 2)
-        array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
+        # array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
         self.assertEquals(best_score, 4.5)
-        self.assertEquals(optimal_moves, [[((2, 2), 1)], [((2, 1), 2), ((2, 2), 0)]])
+        self.assertEquals(optimal_moves, [[((2, 2), 0)], [((1, 2), 1), ((2, 2), 4)]])
         # print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
         # print(best_score)
 
-    #     def test_create_step_tree_depth_3(self):
-    #         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_gamemap, 3)
-    #         # print(*map(str, optimal_moves), best_score)
-    #         # i have to write equals operators for Move and Location...
-    #         self.assertEquals(best_score, 6.5)
-    #         self.assertEquals(optimal_moves,  [[((2, 2), 1)], [((2, 1), 2), ((2, 2), 0)], [((2, 1), 0), ((3, 1), 0), ((2, 2), 0)]])
-    #         print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
-    #         print(best_score)
-    #         geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
-    #
-    #
-    #     def measure_speed_optimal_solution(self, n):
-    #         start = datetime.now()
-    #         geographic_utils.find_optimal_moves(self.start_gamemap, n)
-    #         end = datetime.now()
-    #         return str(end - start)
-    #
-    #     def test_speed_search(self):
-    #         for n in range(1,4):
-    #             yappi.start()
-    #             print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
-    #             yappi.stop()
-    #             yappi.get_func_stats().print_all(columns= {0:("name",60), 1:("ncall", 8),
-    #                     2:("tsub", 8), 3: ("ttot", 8), 4:("tavg",8)})
-    #             # yappi.get_thread_stats().print_all()
-    #             yappi.clear_stats()
-    #         # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 2)))
-    #         # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 3)))
-    #
-    #     def dont_test_create_many_steps(self):
-    #         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_gamemap, 5)
-    #         print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
-    #         print(best_score)
-    #         geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
+    def test_create_step_tree_depth_3(self):
+        optimal_moves, best_score = array_geographic_utils.find_optimal_moves(self.start_gamemap, 3)
+        # print(*map(str, optimal_moves), best_score)
+        # i have to write equals operators for Move and Location...
+        self.assertEquals(best_score, 6.5)
+        self.assertEquals(optimal_moves,  [[((2, 2), 0)],
+                                           [((1, 2), 1), ((2, 2), 4)],
+                                           [((1, 2), 4), ((1, 3), 4), ((2, 2), 1)]])
+        # print(array_geographic_utils.moves_multiple_turns_to_string(optimal_moves))
+        # print(best_score)
+        # array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
+
+    def measure_speed_optimal_solution(self, n):
+        start = datetime.now()
+        array_geographic_utils.find_optimal_moves(self.start_gamemap, n)
+        end = datetime.now()
+        return str(end - start)
+
+    def test_speed_search(self):
+        for n in range(3,5):
+            yappi.start()
+            print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
+            yappi.stop()
+            yappi.get_func_stats().print_all(columns= {0:("name",60), 1:("ncall", 8),
+                    2:("tsub", 8), 3: ("ttot", 8), 4:("tavg",8)})
+            # yappi.get_thread_stats().print_all()
+            yappi.clear_stats()
+        # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 2)))
+        # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 3)))
+
+    def dont_test_create_many_steps(self):
+        optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_gamemap, 5)
+        print(geographic_utils.moves_multiple_turns_to_string(optimal_moves))
+        print(best_score)
+        geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
 
 
     def dont_test_numpy_element_reference(self):

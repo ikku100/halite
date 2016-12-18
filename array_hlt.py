@@ -20,8 +20,8 @@ def grouper(iterable, n, fillvalue=None):
     args = [iter(iterable)] * n
     return zip_longest(*args, fillvalue=fillvalue)
 
-Location = namedtuple('Location', 'x y')
-Range = namedtuple('Range', "x1 y1 x2 y2")
+Location = namedtuple('Location', 'y x')
+# Range = namedtuple('Range', "x1 y1 x2 y2")
 
 # Because Python uses zero-based indexing, the cardinal directions have a different mapping in this Python starterbot
 # framework than that used by the Halite game environment.  This simplifies code in several places.  To accommodate
@@ -70,6 +70,7 @@ class GameMap:
         # self.str = numpy.empty()
         self.prod = np.fromstring(production_string, dtype=int, sep=' ')
         self.prod = self.prod.reshape(self.height, self.width)
+        # self.prod = np.ndarray.swapaxes(self.prod, 0, 1)
         self.log(self.prod)
         return self
 
@@ -110,13 +111,13 @@ class GameMap:
         assert len(owners) == self.width * self.height
         self.owners = np.array(owners, dtype=np.int16)
         self.owners = self.owners.reshape(self.height, self.width)
-        self.owners = np.ndarray.swapaxes(self.owners, 0, 1)
+        # self.owners = np.ndarray.swapaxes(self.owners, 0, 1)
 
 
         assert len(split_string) == self.width * self.height
         self.strength = np.array(split_string, dtype=np.int16)# fromstring(split_string, dtype=int, sep=' ')
         self.strength = self.strength.reshape(self.height, self.width)
-        self.strength = np.ndarray.swapaxes(self.strength, 0, 1)
+        # self.strength = np.ndarray.swapaxes(self.strength, 0, 1)
 
     def neighbors(self, x, y, n=1, include_self=False):
         "Iterable over the n-distance neighbors of a given square.  For single-step neighbors, the enumeration index provides the direction associated with the neighbor."
@@ -204,7 +205,7 @@ class GameMap:
         if direction == STILL:
             return location
         x, y = self.get_new_coordinates(location.x, location.y, direction)
-        return Location(x, y)
+        return Location(y, x)
 
     def my_locations_list(self):
         my_locs_in_array = numpy.argwhere(self.owners == self.playerID)
@@ -213,9 +214,9 @@ class GameMap:
 
         return my_locs
 
-    def evolve_assuming_no_enemy(self, moves_as_coordinates_direction_list):
-        for location, direction in moves_as_coordinates_direction_list:
-            x, y = location
+    def evolve_assuming_no_enemy(self, moves_as_yx_coordinates_direction_list):
+        for location, direction in moves_as_yx_coordinates_direction_list:
+            y, x = location
             if direction is STILL:
                 self.strength[y, x] += self.prod[y, x]
                 continue
