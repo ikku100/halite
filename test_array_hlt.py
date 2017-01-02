@@ -25,6 +25,16 @@ class TestArrayHlt(unittest.TestCase):
         first_frame = "15 0 1 1 15 0 1 2 25 0 1 3 15 0 1 4 25 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
         return array_hlt.GameMap.make_gamemap_from_strings(id, size_string, gamemap_production_str, first_frame)
 
+    @staticmethod
+    def give_map_with_my_big_area():
+        id = 3
+        size_string = "10 10 "
+        gamemap_production_str = "8 8 3 2 6 14 8 6 3 4 7 7 2 2 7 10 4 2 3 7 8 6 3 4 8 8 3 2 6 14 4 2 3 7 7 7 2 2 7 10 3 2 6 14 8 6 3 4 8 8 2 2 7 10 4 2 3 7 7 7 3 4 8 8 3 2 6 14 8 6 3 7 7 7 2 2 7 10 4 2 6 14 8 6 3 4 8 8 3 2 7 10 4 2 3 7 7 7 2 2 "
+        first_frame = "15 0 1 1 15 0 1 2 5 3 20 0 6 3 10 0 1 4 25 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
+        first_frame = "15 0 1 1 15 0 1 2 5 3 5 0 5 3 5 0 6 3 5 0 5 3 5 0 1 4 25 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
+        first_frame = "15 0 1 1 15 0 1 2 5 3 5 0 5 3 5 0 6 3 5 0 5 3 5 0 5 3 21 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
+        return array_hlt.GameMap.make_gamemap_from_strings(id, size_string, gamemap_production_str, first_frame)
+
     def test_gamemap_construction(self):
         id = 3
         size_string = "10 10 "
@@ -99,16 +109,16 @@ class TestArrayHlt(unittest.TestCase):
         # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 2)))
         # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 3)))
 
-    def test_dijkstra_algo_start(self):
+    def dont_test_dijkstra_algo_start(self):
         gamemap = self.give_some_map()
         dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
         dijkstra_map.calculate_scores(gamemap=gamemap)
-        a = 1 -1
 
-    def test_dijkstra_algo_start(self):
-        gamemap = self.give_some_map()
+    def test_scoring_and_moves_inner_area(self):
+        gamemap = self.give_map_with_my_big_area()
         dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
         dijkstra_map.calculate_scores(gamemap=gamemap)
+        print(str(dijkstra_map))
 
     def dont_test_create_many_steps(self):
         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_gamemap, 5)

@@ -4,9 +4,9 @@
     <list default="true" id="ddd67844-cdd3-4dbe-ad14-4e17bba124d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_geographic_utils.py" afterPath="$PROJECT_DIR$/array_geographic_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_hlt.py" afterPath="$PROJECT_DIR$/array_hlt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ikku100_04.py" afterPath="$PROJECT_DIR$/ikku100_04.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runGame.bat" afterPath="$PROJECT_DIR$/runGame.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_array_hlt.py" afterPath="$PROJECT_DIR$/test_array_hlt.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ikku100_04.py" afterPath="$PROJECT_DIR$/MyBot.py" />
     </list>
     <ignored path="halite.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,43 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ikku100_03.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ikku100_03.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_geographic_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_geographic_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="geographic_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geographic_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <element signature="e#382#1035#0" expanded="false" />
@@ -93,60 +61,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ikku100_01.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ikku100_01.py">
+      <file leaf-file-name="runGame.bat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runGame.bat">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="127" lean-forward="false" selection-start-line="0" selection-start-column="127" selection-end-line="0" selection-end-column="127" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ikku100_04.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ikku100_04.py">
+      <file leaf-file-name="MyBot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="40" column="58" lean-forward="false" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ikku100_02.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ikku100_02.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1989">
-              <caret line="118" column="19" lean-forward="false" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_array_hlt.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_array_hlt.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="196">
+              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding>
                 <element signature="e#16#31#0" expanded="true" />
-                <element signature="e#6422#6686#0" expanded="false" />
-                <element signature="e#6746#6947#0" expanded="false" />
-                <element signature="e#6999#7123#0" expanded="false" />
-                <element signature="e#7183#7296#0" expanded="false" />
+                <element signature="e#8180#8444#0" expanded="false" />
+                <element signature="e#8504#8705#0" expanded="false" />
+                <element signature="e#8757#8881#0" expanded="false" />
+                <element signature="e#8941#9054#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -160,67 +106,6 @@
                 <element signature="e#917#927#0" expanded="true" />
                 <element signature="e#7920#8568#0" expanded="false" />
                 <element signature="e#8633#8788#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyBot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alt_starter/MyBot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hlt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hlt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#905#931#0" expanded="false" />
-                <element signature="e#1035#1064#0" expanded="false" />
-                <element signature="e#1206#1242#0" expanded="false" />
-                <element signature="e#1407#1453#0" expanded="false" />
-                <element signature="e#1486#1537#0" expanded="false" />
-                <element signature="e#2053#2089#0" expanded="false" />
-                <element signature="e#3605#3620#0" expanded="false" />
-                <element signature="e#3657#3728#0" expanded="false" />
-                <element signature="e#3773#3979#0" expanded="false" />
-                <element signature="e#4021#4356#0" expanded="false" />
-                <element signature="e#4494#5111#0" expanded="false" />
-                <element signature="e#4533#4638#0" expanded="false" />
-                <element signature="e#4691#4795#0" expanded="false" />
-                <element signature="e#4849#4954#0" expanded="false" />
-                <element signature="e#5007#5111#0" expanded="false" />
-                <element signature="e#6011#6116#0" expanded="false" />
-                <element signature="e#6169#6273#0" expanded="false" />
-                <element signature="e#6327#6432#0" expanded="false" />
-                <element signature="e#6485#6589#0" expanded="false" />
-                <element signature="e#6663#6810#0" expanded="false" />
-                <element signature="e#7030#7091#0" expanded="false" />
-                <element signature="e#7146#7307#0" expanded="false" />
-                <element signature="e#7187#7307#0" expanded="false" />
-                <element signature="e#7231#7307#0" expanded="false" />
-                <element signature="e#7361#7512#0" expanded="false" />
-                <element signature="e#7402#7512#0" expanded="false" />
-                <element signature="e#7446#7512#0" expanded="false" />
-                <element signature="e#7546#7583#0" expanded="false" />
-                <element signature="e#7720#7818#0" expanded="false" />
-                <element signature="e#9540#9650#0" expanded="false" />
-                <element signature="e#9581#9650#0" expanded="false" />
-                <element signature="e#9685#10765#0" expanded="false" />
-                <element signature="e#9711#9950#0" expanded="false" />
-                <element signature="e#10061#10359#0" expanded="false" />
-                <element signature="e#10308#10359#0" expanded="false" />
-                <element signature="e#10443#10743#0" expanded="false" />
-                <element signature="e#10692#10743#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -273,15 +158,15 @@
         <option value="$PROJECT_DIR$/ikku100_02.py" />
         <option value="$USER_HOME$/Anaconda3/Lib/site-packages/yappi.py" />
         <option value="$PROJECT_DIR$/ikku100_03.py" />
-        <option value="$PROJECT_DIR$/runGame.bat" />
         <option value="$PROJECT_DIR$/geographic_utils.py" />
         <option value="$PROJECT_DIR$/test_geographic_utils.py" />
         <option value="$PROJECT_DIR$/hlt.py" />
         <option value="$PROJECT_DIR$/multiply_example.py" />
-        <option value="$PROJECT_DIR$/test_array_hlt.py" />
         <option value="$PROJECT_DIR$/ikku100_04.py" />
-        <option value="$PROJECT_DIR$/array_geographic_utils.py" />
         <option value="$PROJECT_DIR$/array_hlt.py" />
+        <option value="$PROJECT_DIR$/runGame.bat" />
+        <option value="$PROJECT_DIR$/array_geographic_utils.py" />
+        <option value="$PROJECT_DIR$/test_array_hlt.py" />
       </list>
     </option>
   </component>
@@ -679,38 +564,45 @@
       <option name="project" value="LOCAL" />
       <updated>1482070662313</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Scoring works. Best moves works and filters moves too.&#10;It can now win from silly bots. Time for a submit.">
+      <created>1483347569827</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1483347569827</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.27 at 12h 17m 28s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 18m 46s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 10h 43m 21s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 19m 49s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 17h 04m 47s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 22m 26s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 17h 07m 21s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 22m 30s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 17h 11m 10s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 08m 36s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 17h 21m 38s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 10m 33s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 17h 26m 25s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 12m 13s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2016.12.28 at 18h 49m 46s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 13m 29s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 09h 55m 13s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 14m 36s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 09h 57m 08s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 21m 24s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
   </component>
@@ -725,24 +617,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="2" width="1859" height="1085" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25176343" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25176343" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4056902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4056902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -784,7 +676,8 @@
     <MESSAGE value="array_hlt works in parsing the map" />
     <MESSAGE value="array_hlt and geo utils progress. Working on finding best moves. x and y are being swapped most likely" />
     <MESSAGE value="It now works with Numpy. TIme for speed analysis!" />
-    <option name="LAST_COMMIT_MESSAGE" value="It now works with Numpy. TIme for speed analysis!" />
+    <MESSAGE value="Scoring works. Best moves works and filters moves too.&#10;It can now win from silly bots. Time for a submit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Scoring works. Best moves works and filters moves too.&#10;It can now win from silly bots. Time for a submit." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,7 +707,7 @@
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ikku100_04.py</url>
+          <url>file://$PROJECT_DIR$/MyBot.py</url>
           <line>32</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
@@ -824,16 +717,21 @@
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test_array_hlt.py</url>
-          <line>105</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hlt.py</url>
           <option name="timeStamp" value="112" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/array_geographic_utils.py</url>
+          <line>246</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_array_hlt.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="114" />
+      <option name="time" value="117" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -937,7 +835,7 @@
         <state relative-caret-position="476">
           <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1147,13 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/runGame.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="132" lean-forward="false" selection-start-line="0" selection-start-column="132" selection-end-line="0" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1197,6 +1088,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
           <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,6 +1096,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10778">
           <caret line="647" column="0" lean-forward="false" selection-start-line="647" selection-start-column="0" selection-end-line="647" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1211,6 +1104,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2006">
           <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,34 +1147,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ikku100_03.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/multiply_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#31#0" expanded="true" />
-            <element signature="e#6422#6686#0" expanded="false" />
-            <element signature="e#6746#6947#0" expanded="false" />
-            <element signature="e#6999#7123#0" expanded="false" />
-            <element signature="e#7183#7296#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1289,7 +1159,7 @@
         <state relative-caret-position="51">
           <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1298,16 +1168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ikku100_04.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="40" column="58" lean-forward="false" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1386,6 +1246,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/runGame.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="127" lean-forward="false" selection-start-line="0" selection-start-column="127" selection-end-line="0" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyBot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1394,10 +1270,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ikku100_03.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#11#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+        <state relative-caret-position="162">
+          <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <element signature="e#382#1035#0" expanded="false" />
@@ -1421,6 +1307,20 @@
             <element signature="e#5457#6130#0" expanded="false" />
             <element signature="e#6189#6338#0" expanded="false" />
             <element signature="e#6241#6320#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#31#0" expanded="true" />
+            <element signature="e#8180#8444#0" expanded="false" />
+            <element signature="e#8504#8705#0" expanded="false" />
+            <element signature="e#8757#8881#0" expanded="false" />
+            <element signature="e#8941#9054#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -242,13 +242,15 @@ class ScoringGeoMap:
                 self.square_stati[from_sq] = self.Status.DONE
             grow_from_to_squares = self.get_next_potential_neighbours(gamemap)
 
+        self.update_step_distances_inside(gamemap)
         # Now get the best scores going from outside to inside
         self.update_scores_from_out_to_inside(gamemap)
 
     def update_scores_from_out_to_inside(self, gamemap: GameMap):
         max_distance = np.amax(self.step_distances)
         max_distance = gamemap.fog_of_war_distance()
-        for distance in range (max_distance - 1, 0, -1): # skip first outer layer as that doesn't have a NEXT nearest n.
+        min_distance = np.amin(self.step_distances)
+        for distance in range (max_distance - 1, min_distance - 1, -1): # skip first outer layer as that doesn't have a NEXT nearest n.
             # from_squares = np.argwhere(self.step_distances == distance)
             from_squares = np.where(self.step_distances == distance)
             for square in zip(*from_squares):
@@ -258,7 +260,11 @@ class ScoringGeoMap:
                     if self.step_distances[neighbour] == distance + 1:
                         if self.score[neighbour] > optimal_score:
                             optimal_score = self.score[neighbour]
-                self.score[square] += np.int16(0.5 * optimal_score)
+                # do inner area differently, we don't want everything to move inwards!
+                if distance < 0:
+                    self.score[square] += np.int16(optimal_score) - 1
+                else:
+                    self.score[square] += np.int16(0.5 * optimal_score)
 
     def calculate_best_moves(self, gamemap: GameMap):
         moves = []
@@ -287,6 +293,19 @@ class ScoringGeoMap:
             return moves
         else:
             return [(location, STILL) for location, move in moves]
+
+    def update_step_distances_inside(self, gamemap):
+        my_boundary = np.where(self.step_distances == 0)
+        step_distance = 0
+        while len(my_boundary) > 0 and len(my_boundary[0]) > 0:
+            step_distance -= 1
+            for square in zip(*my_boundary):
+                for move in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+                    neighbour = ((square[0] + move[0]) % gamemap.height, (square[1] + move[1]) % gamemap.width)
+                    if self.square_stati[neighbour] == self.Status.UNKNOWN:
+                        self.square_stati[neighbour] = self.Status.INNER_TERRITORY
+                        self.step_distances[neighbour] = step_distance
+            my_boundary = np.where(self.step_distances == step_distance)
 
 
 def play_my_moves(game_map, moves_per_turn):
