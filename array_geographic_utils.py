@@ -268,12 +268,20 @@ class ScoringGeoMap:
 
     def calculate_best_moves(self, gamemap: GameMap):
         moves = []
-        for square in gamemap.my_locations_list():
+        my_total_str = gamemap.my_total_strength()
+        my_locations_list = gamemap.my_locations_list()
+        num_my_location = len(my_locations_list)
+        for square in my_locations_list:
+            my_str = gamemap.strength[square]
             best_move = STILL
             optimal_score = -9999
             for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
                 neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
-                if self.score[neighbour] > optimal_score and gamemap.strength[square] >= gamemap.strength[neighbour]:
+                # do inner area differently, but only if strength is less than half the max (if bigger, just gogo!)
+                # also check for insignificance str of this square (compare it to average str)
+                if self.step_distances[square] < 0 and my_str < 256/2 and my_str < my_total_str / my_locations_list:
+                    pass # for now just don't do anything
+                elif self.score[neighbour] > optimal_score and my_str >= gamemap.strength[neighbour]:
                     # only move if target has better score or target isn't mine
                     if gamemap.owners[neighbour] != gamemap.playerID or self.score[square] < self.score[neighbour]:
                         optimal_score = self.score[neighbour]
