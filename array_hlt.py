@@ -91,7 +91,7 @@ class GameMap:
         self.prod = np.fromstring(production_string, dtype=int, sep=' ')
         self.prod = self.prod.reshape(self.height, self.width)
         # self.prod = np.ndarray.swapaxes(self.prod, 0, 1)
-        self.log(self.prod)
+        # self.log(self.prod)
         return self
 
     def __copy__(self):
@@ -110,7 +110,6 @@ class GameMap:
         result.strength = self.strength.copy()
         result.owners = self.owners.copy()
         return result
-
 
     def log(self, obj):
         self.logfile.write(str(obj))
@@ -250,6 +249,30 @@ class GameMap:
                 self.strength[new_y, new_x] = self.strength[y, x] - self.strength[new_y, new_x]
                 self.owners[new_y, new_x] = self.playerID
                 self.strength[y, x] = 0
+
+    def evolve_assuming_no_enemy_and_get_origin_and_target_and_move(self, moves_as_yx_coordinates_direction_list):
+        """This function updates the map and for efficiency also returns the origin and target site, and its move, for
+        all moves. It doesn't return the STILL moves"""
+        origin_target_and_moves = []
+        for location, direction in moves_as_yx_coordinates_direction_list:
+            y, x = location
+            if direction is STILL:
+                self.strength[y, x] += self.prod[y, x]
+                continue
+            new_x, new_y = self.get_new_coordinates(x, y, direction)
+            origin_target_and_moves.append((location, (new_y, new_x), direction))
+            if self.owners[(new_y, new_x)] == self.playerID:
+                self.strength[new_y, new_x] += self.strength[y, x]
+                self.strength[y, x] = 0
+            elif self.strength[y, x] < self.strength[new_y, new_x]:
+                self.strength[new_y, new_x] -= self.strength[y, x]
+            else:  # site gets overtaken!
+                self.strength[new_y, new_x] = self.strength[y, x] - self.strength[new_y, new_x]
+                self.owners[new_y, new_x] = self.playerID
+                self.strength[y, x] = 0
+            if self.strength[(new_y, new_x)] > 255:
+                self.strength[(new_y, new_x)] = 255
+        return origin_target_and_moves
 
     def fog_of_war_distance(self):
         total_area = self.height * self.width

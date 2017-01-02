@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ddd67844-cdd3-4dbe-ad14-4e17bba124d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyBot.py" afterPath="$PROJECT_DIR$/MyBot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_geographic_utils.py" afterPath="$PROJECT_DIR$/array_geographic_utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_hlt.py" afterPath="$PROJECT_DIR$/array_hlt.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_array_hlt.py" afterPath="$PROJECT_DIR$/test_array_hlt.py" />
     </list>
     <ignored path="halite.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,31 +31,31 @@
       <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="284" column="113" lean-forward="false" selection-start-line="284" selection-start-column="113" selection-end-line="284" selection-end-column="113" />
+            <state relative-caret-position="406">
+              <caret line="372" column="24" lean-forward="false" selection-start-line="372" selection-start-column="24" selection-end-line="372" selection-end-column="24" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#382#1035#0" expanded="false" />
-                <element signature="e#497#526#0" expanded="false" />
-                <element signature="e#677#707#0" expanded="false" />
-                <element signature="e#774#897#0" expanded="false" />
-                <element signature="e#916#1035#0" expanded="false" />
-                <element signature="e#1107#1220#0" expanded="false" />
-                <element signature="e#2306#2539#0" expanded="false" />
-                <element signature="e#2566#2637#0" expanded="false" />
-                <element signature="e#2673#3216#0" expanded="false" />
-                <element signature="e#2881#3194#0" expanded="false" />
-                <element signature="e#2925#3194#0" expanded="false" />
-                <element signature="e#3277#3726#0" expanded="false" />
-                <element signature="e#3338#3702#0" expanded="false" />
-                <element signature="e#3381#3702#0" expanded="false" />
-                <element signature="e#3479#3702#0" expanded="false" />
-                <element signature="e#3479#3563#0" expanded="false" />
-                <element signature="e#3757#3774#0" expanded="false" />
-                <element signature="e#4763#5401#0" expanded="false" />
-                <element signature="e#5457#6130#0" expanded="false" />
-                <element signature="e#6189#6338#0" expanded="false" />
-                <element signature="e#6241#6320#0" expanded="false" />
+                <element signature="e#384#1037#0" expanded="false" />
+                <element signature="e#499#528#0" expanded="false" />
+                <element signature="e#679#709#0" expanded="false" />
+                <element signature="e#776#899#0" expanded="false" />
+                <element signature="e#918#1037#0" expanded="false" />
+                <element signature="e#1109#1222#0" expanded="false" />
+                <element signature="e#2308#2541#0" expanded="false" />
+                <element signature="e#2568#2639#0" expanded="false" />
+                <element signature="e#2675#3218#0" expanded="false" />
+                <element signature="e#2883#3196#0" expanded="false" />
+                <element signature="e#2927#3196#0" expanded="false" />
+                <element signature="e#3279#3728#0" expanded="false" />
+                <element signature="e#3340#3704#0" expanded="false" />
+                <element signature="e#3383#3704#0" expanded="false" />
+                <element signature="e#3481#3704#0" expanded="false" />
+                <element signature="e#3481#3565#0" expanded="false" />
+                <element signature="e#3759#3776#0" expanded="false" />
+                <element signature="e#4765#5403#0" expanded="false" />
+                <element signature="e#5459#6132#0" expanded="false" />
+                <element signature="e#6191#6340#0" expanded="false" />
+                <element signature="e#6243#6322#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -68,12 +71,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SampleBot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SampleBot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ikku100_01.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ikku100_01.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="65" column="30" lean-forward="true" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MyBot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="406">
+              <caret line="37" column="31" lean-forward="false" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,15 +106,25 @@
       <file leaf-file-name="test_array_hlt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="178">
+              <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
                 <element signature="e#16#31#0" expanded="true" />
-                <element signature="e#8180#8444#0" expanded="false" />
-                <element signature="e#8504#8705#0" expanded="false" />
-                <element signature="e#8757#8881#0" expanded="false" />
-                <element signature="e#8941#9054#0" expanded="false" />
+                <element signature="e#8700#8964#0" expanded="false" />
+                <element signature="e#9024#9225#0" expanded="false" />
+                <element signature="e#9277#9401#0" expanded="false" />
+                <element signature="e#9461#9574#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="599" column="0" lean-forward="false" selection-start-line="599" selection-start-column="0" selection-end-line="599" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,12 +132,60 @@
       <file leaf-file-name="array_hlt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="257" column="32" lean-forward="false" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
+            <state relative-caret-position="203">
+              <caret line="117" column="13" lean-forward="false" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
               <folding>
                 <element signature="e#917#927#0" expanded="true" />
-                <element signature="e#7920#8568#0" expanded="false" />
-                <element signature="e#8633#8788#0" expanded="false" />
+                <element signature="e#7921#8569#0" expanded="false" />
+                <element signature="e#8634#8789#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hlt.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hlt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#905#931#0" expanded="false" />
+                <element signature="e#1206#1242#0" expanded="false" />
+                <element signature="e#1407#1453#0" expanded="false" />
+                <element signature="e#1486#1537#0" expanded="false" />
+                <element signature="e#2053#2089#0" expanded="false" />
+                <element signature="e#3605#3620#0" expanded="false" />
+                <element signature="e#3657#3728#0" expanded="false" />
+                <element signature="e#3773#3979#0" expanded="false" />
+                <element signature="e#4021#4356#0" expanded="false" />
+                <element signature="e#4494#5111#0" expanded="false" />
+                <element signature="e#4533#4638#0" expanded="false" />
+                <element signature="e#4691#4795#0" expanded="false" />
+                <element signature="e#4849#4954#0" expanded="false" />
+                <element signature="e#5007#5111#0" expanded="false" />
+                <element signature="e#6011#6116#0" expanded="false" />
+                <element signature="e#6169#6273#0" expanded="false" />
+                <element signature="e#6327#6432#0" expanded="false" />
+                <element signature="e#6485#6589#0" expanded="false" />
+                <element signature="e#6663#6810#0" expanded="false" />
+                <element signature="e#7030#7091#0" expanded="false" />
+                <element signature="e#7146#7307#0" expanded="false" />
+                <element signature="e#7187#7307#0" expanded="false" />
+                <element signature="e#7231#7307#0" expanded="false" />
+                <element signature="e#7361#7512#0" expanded="false" />
+                <element signature="e#7402#7512#0" expanded="false" />
+                <element signature="e#7446#7512#0" expanded="false" />
+                <element signature="e#7546#7583#0" expanded="false" />
+                <element signature="e#7720#7818#0" expanded="false" />
+                <element signature="e#9540#9650#0" expanded="false" />
+                <element signature="e#9581#9650#0" expanded="false" />
+                <element signature="e#9685#10765#0" expanded="false" />
+                <element signature="e#9711#9950#0" expanded="false" />
+                <element signature="e#10061#10359#0" expanded="false" />
+                <element signature="e#10308#10359#0" expanded="false" />
+                <element signature="e#10443#10743#0" expanded="false" />
+                <element signature="e#10692#10743#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -139,6 +222,8 @@
       <find>neig</find>
       <find>send</find>
       <find>print</find>
+      <find>&quot;array&quot;</find>
+      <find>log</find>
     </findStrings>
     <replaceStrings>
       <replace>y</replace>
@@ -160,9 +245,10 @@
         <option value="$PROJECT_DIR$/hlt.py" />
         <option value="$PROJECT_DIR$/multiply_example.py" />
         <option value="$PROJECT_DIR$/ikku100_04.py" />
-        <option value="$PROJECT_DIR$/array_hlt.py" />
         <option value="$PROJECT_DIR$/runGame.bat" />
         <option value="$PROJECT_DIR$/test_array_hlt.py" />
+        <option value="$PROJECT_DIR$/array_hlt.py" />
+        <option value="$PROJECT_DIR$/MyBot.py" />
         <option value="$PROJECT_DIR$/array_geographic_utils.py" />
       </list>
     </option>
@@ -589,38 +675,45 @@
       <option name="project" value="LOCAL" />
       <updated>1483379665883</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="bugfix">
+      <created>1483379788693</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1483379788693</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 18m 46s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 08m 16s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 19m 49s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 10m 11s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 22m 26s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 12m 48s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 10h 22m 30s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 14m 49s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 08m 36s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 16m 35s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 10m 33s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 17m 51s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 12m 13s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 20m 29s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 13m 29s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 22m 39s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 14m 36s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 40m 09s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 18h 21m 24s.xml">
+    <history-entry file="Unittests_in_test_array_hlt - 2017.01.02 at 23h 41m 37s.xml">
       <configuration name="Unittests in test_array_hlt" configurationId="tests" />
     </history-entry>
   </component>
@@ -640,14 +733,14 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25176343" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4056902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4056902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -698,7 +791,8 @@
     <MESSAGE value="Scoring inner area now too" />
     <MESSAGE value="Inner area not doing anything if:                 if self.step_distances[square] &lt; 0 and my_str &lt; 256/2 and my_str &lt; my_total_str / my_locations_list:&#10;" />
     <MESSAGE value="skip moves with str==0" />
-    <option name="LAST_COMMIT_MESSAGE" value="skip moves with str==0" />
+    <MESSAGE value="bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -743,35 +837,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/array_geographic_utils.py</url>
-          <line>246</line>
+          <line>248</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test_array_hlt.py</url>
-          <line>120</line>
+          <line>132</line>
           <option name="timeStamp" value="116" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_array_hlt.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="117" />
+      <option name="time" value="126" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../various/DesignOfComputerPrograms/l5_foxes_and_hens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_geographic_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/-1094446064/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63529">
@@ -790,7 +874,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#905#931#0" expanded="false" />
-            <element signature="e#1035#1064#0" expanded="false" />
             <element signature="e#1206#1242#0" expanded="false" />
             <element signature="e#1407#1453#0" expanded="false" />
             <element signature="e#1486#1537#0" expanded="false" />
@@ -895,7 +978,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#905#931#0" expanded="false" />
-            <element signature="e#1035#1064#0" expanded="false" />
             <element signature="e#1206#1242#0" expanded="false" />
             <element signature="e#1407#1453#0" expanded="false" />
             <element signature="e#1486#1537#0" expanded="false" />
@@ -963,7 +1045,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#905#931#0" expanded="false" />
-            <element signature="e#1035#1064#0" expanded="false" />
             <element signature="e#1206#1242#0" expanded="false" />
             <element signature="e#1407#1453#0" expanded="false" />
             <element signature="e#1486#1537#0" expanded="false" />
@@ -1113,14 +1194,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10778">
-          <caret line="647" column="0" lean-forward="false" selection-start-line="647" selection-start-column="0" selection-end-line="647" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/suite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2006">
@@ -1192,7 +1265,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ikku100_01.py">
+    <entry file="file://$PROJECT_DIR$/geographic_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_geographic_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ikku100_03.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#11#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="599" column="0" lean-forward="false" selection-start-line="599" selection-start-column="0" selection-end-line="599" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#31#0" expanded="true" />
+            <element signature="e#8700#8964#0" expanded="false" />
+            <element signature="e#9024#9225#0" expanded="false" />
+            <element signature="e#9277#9401#0" expanded="false" />
+            <element signature="e#9461#9574#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/array_hlt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="117" column="13" lean-forward="false" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
+          <folding>
+            <element signature="e#917#927#0" expanded="true" />
+            <element signature="e#7921#8569#0" expanded="false" />
+            <element signature="e#8634#8789#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5array_hlt20170102-230531.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1200,26 +1333,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/array_hlt.py">
+    <entry file="file://$PROJECT_DIR$/runGame.bat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="257" column="32" lean-forward="false" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
-          <folding>
-            <element signature="e#917#927#0" expanded="true" />
-            <element signature="e#7920#8568#0" expanded="false" />
-            <element signature="e#8633#8788#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="127" lean-forward="false" selection-start-line="0" selection-start-column="127" selection-end-line="0" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleBot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hlt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="203">
+          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#905#931#0" expanded="false" />
-            <element signature="e#1035#1064#0" expanded="false" />
             <element signature="e#1206#1242#0" expanded="false" />
             <element signature="e#1407#1453#0" expanded="false" />
             <element signature="e#1486#1537#0" expanded="false" />
@@ -1259,89 +1395,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geographic_utils.py">
+    <entry file="file://$PROJECT_DIR$/ikku100_01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runGame.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="127" lean-forward="false" selection-start-line="0" selection-start-column="127" selection-end-line="0" selection-end-column="127" />
+        <state relative-caret-position="406">
+          <caret line="65" column="30" lean-forward="true" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyBot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_geographic_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ikku100_03.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="406">
+          <caret line="37" column="31" lean-forward="false" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
           <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_array_hlt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#31#0" expanded="true" />
-            <element signature="e#8180#8444#0" expanded="false" />
-            <element signature="e#8504#8705#0" expanded="false" />
-            <element signature="e#8757#8881#0" expanded="false" />
-            <element signature="e#8941#9054#0" expanded="false" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="284" column="113" lean-forward="false" selection-start-line="284" selection-start-column="113" selection-end-line="284" selection-end-column="113" />
+        <state relative-caret-position="406">
+          <caret line="372" column="24" lean-forward="false" selection-start-line="372" selection-start-column="24" selection-end-line="372" selection-end-column="24" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#382#1035#0" expanded="false" />
-            <element signature="e#497#526#0" expanded="false" />
-            <element signature="e#677#707#0" expanded="false" />
-            <element signature="e#774#897#0" expanded="false" />
-            <element signature="e#916#1035#0" expanded="false" />
-            <element signature="e#1107#1220#0" expanded="false" />
-            <element signature="e#2306#2539#0" expanded="false" />
-            <element signature="e#2566#2637#0" expanded="false" />
-            <element signature="e#2673#3216#0" expanded="false" />
-            <element signature="e#2881#3194#0" expanded="false" />
-            <element signature="e#2925#3194#0" expanded="false" />
-            <element signature="e#3277#3726#0" expanded="false" />
-            <element signature="e#3338#3702#0" expanded="false" />
-            <element signature="e#3381#3702#0" expanded="false" />
-            <element signature="e#3479#3702#0" expanded="false" />
-            <element signature="e#3479#3563#0" expanded="false" />
-            <element signature="e#3757#3774#0" expanded="false" />
-            <element signature="e#4763#5401#0" expanded="false" />
-            <element signature="e#5457#6130#0" expanded="false" />
-            <element signature="e#6189#6338#0" expanded="false" />
-            <element signature="e#6241#6320#0" expanded="false" />
+            <element signature="e#384#1037#0" expanded="false" />
+            <element signature="e#499#528#0" expanded="false" />
+            <element signature="e#679#709#0" expanded="false" />
+            <element signature="e#776#899#0" expanded="false" />
+            <element signature="e#918#1037#0" expanded="false" />
+            <element signature="e#1109#1222#0" expanded="false" />
+            <element signature="e#2308#2541#0" expanded="false" />
+            <element signature="e#2568#2639#0" expanded="false" />
+            <element signature="e#2675#3218#0" expanded="false" />
+            <element signature="e#2883#3196#0" expanded="false" />
+            <element signature="e#2927#3196#0" expanded="false" />
+            <element signature="e#3279#3728#0" expanded="false" />
+            <element signature="e#3340#3704#0" expanded="false" />
+            <element signature="e#3383#3704#0" expanded="false" />
+            <element signature="e#3481#3704#0" expanded="false" />
+            <element signature="e#3481#3565#0" expanded="false" />
+            <element signature="e#3759#3776#0" expanded="false" />
+            <element signature="e#4765#5403#0" expanded="false" />
+            <element signature="e#5459#6132#0" expanded="false" />
+            <element signature="e#6191#6340#0" expanded="false" />
+            <element signature="e#6243#6322#0" expanded="false" />
           </folding>
         </state>
       </provider>

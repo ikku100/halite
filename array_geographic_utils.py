@@ -7,6 +7,8 @@ from enum import IntEnum
 
 MAX_SMALL_INT = np.iinfo(np.int16).max
 timestr = time.strftime("%Y%m%d-%H%M%S")
+
+
 # logFile = open("geographic_utils_" + timestr + ".log", 'w')
 
 
@@ -245,12 +247,14 @@ class ScoringGeoMap:
         self.update_step_distances_inside(gamemap)
         # Now get the best scores going from outside to inside
         self.update_scores_from_out_to_inside(gamemap)
+        self.update_scores_from_out_to_inside_for_enemies(gamemap)
 
     def update_scores_from_out_to_inside(self, gamemap: GameMap):
         max_distance = np.amax(self.step_distances)
         max_distance = gamemap.fog_of_war_distance()
         min_distance = np.amin(self.step_distances)
-        for distance in range (max_distance - 1, min_distance - 1, -1): # skip first outer layer as that doesn't have a NEXT nearest n.
+        for distance in range(max_distance - 1, min_distance - 1,
+                              -1):  # skip first outer layer as that doesn't have a NEXT nearest n.
             # from_squares = np.argwhere(self.step_distances == distance)
             from_squares = np.where(self.step_distances == distance)
             for square in zip(*from_squares):
@@ -266,6 +270,18 @@ class ScoringGeoMap:
                 else:
                     self.score[square] += np.int16(0.5 * optimal_score)
 
+    def update_scores_from_out_to_inside_for_enemies(self, gamemap):
+        max_distance = gamemap.fog_of_war_distance()
+        for distance in range(max_distance, -1, -1):
+            from_squares = np.where(self.step_distances == distance)
+            for square in zip(*from_squares):
+                optimal_score = -9999
+                for move in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+                    neighbour = ((square[0] + move[0]) % gamemap.height, (square[1] + move[1]) % gamemap.width)
+                    if self.step_distances[neighbour] == distance + 1:
+                        if gamemap.owners[neighbour] > 0 and gamemap.owners[neighbour] != gamemap.playerID:
+                            self.score[square] += 100
+
     def calculate_best_moves(self, gamemap: GameMap):
         moves = []
         my_total_str = gamemap.my_total_strength()
@@ -276,34 +292,41 @@ class ScoringGeoMap:
             if my_str <= 0:
                 moves.append((square, STILL))
                 continue
+
+            # gamemap.log("calculating best move for square: " + str(square) + '\n')
+            # do inner area differently, but only if strength is less than half the max (if bigger, just gogo!)
+            # also check for insignificance str of this square (compare it to average str)
+            if self.step_distances[square] < 0 and my_str < 256 / 2 and my_str < my_total_str / num_my_location:
+                moves.append((square, STILL))
+                continue
+
             best_move = STILL
             optimal_score = -9999
             for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
                 neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
-                # do inner area differently, but only if strength is less than half the max (if bigger, just gogo!)
-                # also check for insignificance str of this square (compare it to average str)
-                if self.step_distances[square] < 0 and my_str < 256/2 and my_str < my_total_str / num_my_location:
-                    pass # for now just don't do anything
-                elif self.score[neighbour] > optimal_score and my_str >= gamemap.strength[neighbour]:
+                # next commented section NEVER HAPPENS as neighbours cannot be enemies because of rules
+                # if gamemap.owners[neighbour] != 0 and gamemap.owners[neighbour] != gamemap.playerID: # neighbour is enemy
+                #     optimal_score = self.score[neighbour] + 100 # just add some score for enemy locations
+                #     best_move = move
+                if self.score[neighbour] > optimal_score and my_str >= gamemap.strength[neighbour]:
                     # only move if target has better score or target isn't mine
                     if gamemap.owners[neighbour] != gamemap.playerID or self.score[square] < self.score[neighbour]:
                         optimal_score = self.score[neighbour]
                         best_move = move
-                        gamemap.log("updating best move to score " +
-                                    str(optimal_score) + ", move: " + MOVES_STRINGS[move] + '\n')
+                        # gamemap.log("updating best move to score " + str(optimal_score) + ", move: " + MOVES_STRINGS[move] + '\n')
             moves.append((square, best_move))
         return moves
 
     def post_process_moves(self, gamemap, moves):
         # find if its useful at all to move:
-        # if the target site has more str than my total str, don't bother
-        # what's the target site??
+        # if all POTENTIAL target sites have more str than my total str, don't bother
         minimum_target_str = min(gamemap.strength[self.step_distances == 1])
-        gamemap.log("minimum_target_str = " + str(minimum_target_str) + '\n')
-        if minimum_target_str < gamemap.my_total_strength():
-            return moves
-        else:
+        # gamemap.log("minimum_target_str = " + str(minimum_target_str) + '\n')
+        if minimum_target_str > gamemap.my_total_strength():
             return [(location, STILL) for location, move in moves]
+        # make high str squares not move unto each other, as the max is 255
+        moves = self.prevent_colliding_high_impact_moves(gamemap, moves)
+        return moves
 
     def update_step_distances_inside(self, gamemap):
         my_boundary = np.where(self.step_distances == 0)
@@ -317,6 +340,58 @@ class ScoringGeoMap:
                         self.square_stati[neighbour] = self.Status.INNER_TERRITORY
                         self.step_distances[neighbour] = step_distance
             my_boundary = np.where(self.step_distances == step_distance)
+
+    @staticmethod
+    def prevent_colliding_high_impact_moves(gamemap_original: GameMap, moves):
+        """Find all moves that move unto a square such that I lose str.
+        First algo: update map with all moves, then find all squares with max str, then find the squares that moved into
+        these squares and make the square with lowest str that did it, not move into this square
+        However, if the originating square has close to max str, then we should probably just move
+            so check if originating str > max - prod, if so, just move
+        """
+        gamemap = gamemap_original.__deepcopy__()
+        origin_target_and_moves = gamemap.evolve_assuming_no_enemy_and_get_origin_and_target_and_move(moves)
+        target_set_with_origin_and_moves = dict()
+        for origin, target, move in origin_target_and_moves:
+            if target in target_set_with_origin_and_moves:
+                target_set_with_origin_and_moves[target] += [(origin, move)]
+            else:
+                target_set_with_origin_and_moves[target] = [(origin, move)]
+
+        # target_set_with_origin_and_moves = dict((target, (origin, move)) for origin, target, move in origin_target_and_moves)
+        my_locations_list = gamemap.my_locations_list()
+        problematic_target_squares = []
+        for square in my_locations_list:
+            my_str = gamemap.strength[square]
+            if my_str == 255:
+                problematic_target_squares.append(square)
+
+        new_moves = []
+        for problem_site in problematic_target_squares:
+            if problem_site not in target_set_with_origin_and_moves:
+                continue
+            origins_and_moves = target_set_with_origin_and_moves[problem_site]
+            max_str = -1
+            max_move = None
+            max_location = None
+            for origin_move in origins_and_moves:
+                origin, move = origin_move
+                my_str = gamemap_original.strength[origin]
+                if my_str > 255 - gamemap.prod[origin]:
+                    continue
+                if my_str > max_str: # TODO make it better: if two sites move unto one, and both would have breached 255
+                    # then obviously BOTH should have moved somewhere else/stand still!
+                    max_str = my_str
+                    max_move = move
+                    max_location = origin
+            if max_location:
+                new_moves.append((max_location, STILL))
+
+        moves_dict = dict(moves)
+        new_moves_dict = dict(new_moves)
+        moves_dict.update(new_moves_dict)
+        return [[k, v] for k, v in moves_dict.items()]
+
 
 
 def play_my_moves(game_map, moves_per_turn):

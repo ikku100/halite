@@ -4,7 +4,7 @@ from datetime import datetime
 # from unittest.mock import Mock
 
 import array_hlt
-from array_hlt import Location as Location, MoveSimple as MoveSimple
+from array_hlt import Location as Location, MoveSimple as MoveSimple, NORTH, EAST, WEST, SOUTH, STILL
 import array_geographic_utils
 import yappi
 # import sys
@@ -90,6 +90,18 @@ class TestArrayHlt(unittest.TestCase):
         # print(array_geographic_utils.moves_multiple_turns_to_string(optimal_moves))
         print(best_score)
         array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
+
+    def test_prevent_colliding_high_impact_moves(self):
+        gamemap = self.give_map_with_my_big_area()
+        moves = (
+            ((6,3), EAST),  # combined problem
+            ((6,4), STILL),
+            ((6,5), WEST),  # combined problem
+            ((3,2), EAST),  # problem alone
+            ((3,4), NORTH)  # no problem, nowhere involved
+        )
+        moves = array_geographic_utils.ScoringGeoMap.prevent_colliding_high_impact_moves(gamemap, moves)
+        print(moves)
 
     def measure_speed_optimal_solution(self, n):
         start = datetime.now()

@@ -31,35 +31,13 @@ gamemap.set_logfile(logFile)
 
 turn = 0
 while True:
-    turn  += 1
+    turn += 1
     gamemap.get_frame()
-    gamemap.log("turn: " + str(turn))
+    # gamemap.log("\nturn: " + str(turn) + '\n')
     dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
     dijkstra_map.calculate_scores(gamemap=gamemap)
     moves = dijkstra_map.calculate_best_moves(gamemap)
-    gamemap.log(str(moves) + '\n')
+    # gamemap.log(str(moves) + '\n')
     moves = dijkstra_map.post_process_moves(gamemap, moves)
-    gamemap.log(str(moves) + '\n')
+    # gamemap.log(str(moves) + '\n')
     array_hlt.send_moves(moves)
-
-
-def never():
-    from geographic_utils import moveToString, createMove, myCenter, find_optimal_moves
-
-
-    turn = 0
-    while True:
-        turn += 1
-        moves = []
-        gameMap = getFrame()
-        my_center = myCenter(gameMap, myID)
-        myX, myY = my_center.x, my_center.y
-        logFile.write("\nTurn " + str(turn) + ". My center is: " + str(myX) + ", " + str(myY) + "\n")
-        for y in range(gameMap.height):
-            for x in range(gameMap.width):
-                location = Location(x, y)
-                if gameMap.getSite(location).owner == myID:
-                    aMove = createMove(gameMap, location, gameMap.getSite(location), myX, myY)
-                    logFile.write(moveToString(aMove))
-                    moves.append(aMove)
-        sendFrame(moves)
