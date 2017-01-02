@@ -17,13 +17,20 @@ class TestArrayHlt(unittest.TestCase):
                                                                  "1 1 1 2 2 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
                                                                  "12 0 1 1337 12 0 " + "1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1")
 
+    @staticmethod
+    def give_some_map():
+        id = 3
+        size_string = "10 10 "
+        gamemap_production_str = "8 8 3 2 6 14 8 6 3 4 7 7 2 2 7 10 4 2 3 7 8 6 3 4 8 8 3 2 6 14 4 2 3 7 7 7 2 2 7 10 3 2 6 14 8 6 3 4 8 8 2 2 7 10 4 2 3 7 7 7 3 4 8 8 3 2 6 14 8 6 3 7 7 7 2 2 7 10 4 2 6 14 8 6 3 4 8 8 3 2 7 10 4 2 3 7 7 7 2 2 "
+        first_frame = "15 0 1 1 15 0 1 2 25 0 1 3 15 0 1 4 25 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
+        return array_hlt.GameMap.make_gamemap_from_strings(id, size_string, gamemap_production_str, first_frame)
+
     def test_gamemap_construction(self):
-        id = 1337
+        id = 3
         size_string = "10 10 "
         gamemap_production_str = "8 8 3 2 6 14 8 6 3 4 7 7 2 2 7 10 4 2 3 7 8 6 3 4 8 8 3 2 6 14 4 2 3 7 7 7 2 2 7 10 3 2 6 14 8 6 3 4 8 8 2 2 7 10 4 2 3 7 7 7 3 4 8 8 3 2 6 14 8 6 3 7 7 7 2 2 7 10 4 2 6 14 8 6 3 4 8 8 3 2 7 10 4 2 3 7 7 7 2 2 "
         first_frame = "15 0 1 1 15 0 1 2 25 0 1 3 15 0 1 4 25 0 1 5 97 96 95 97 82 106 176 112 107 80 79 80 95 77 73 96 168 121 114 98 82 106 176 112 107 80 97 96 95 97 73 96 168 121 114 98 79 80 95 77 107 80 97 96 95 97 82 106 176 112 114 98 79 80 95 77 73 96 168 121 95 97 82 106 176 112 107 80 97 96 95 77 73 96 168 121 114 98 79 80 176 112 107 80 97 96 95 97 82 106 168 121 114 98 79 80 95 77 73 96 "
         # print(list(map(int, row)) for row in array_hlt.grouper(gamemap_production_str.split(), 10))
-
         m = array_hlt.GameMap.make_gamemap_from_strings(id, size_string, gamemap_production_str, first_frame)
         # self.assertEquals(1,2)
 
@@ -71,8 +78,8 @@ class TestArrayHlt(unittest.TestCase):
                                            [((1, 2), 1), ((2, 2), 4)],
                                            [((1, 2), 4), ((1, 3), 4), ((2, 2), 1)]])
         # print(array_geographic_utils.moves_multiple_turns_to_string(optimal_moves))
-        # print(best_score)
-        # array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
+        print(best_score)
+        array_geographic_utils.play_my_moves(self.start_gamemap, optimal_moves)
 
     def measure_speed_optimal_solution(self, n):
         start = datetime.now()
@@ -80,8 +87,8 @@ class TestArrayHlt(unittest.TestCase):
         end = datetime.now()
         return str(end - start)
 
-    def test_speed_search(self):
-        for n in range(3,5):
+    def dont_test_speed_search(self):
+        for n in range(1,4):
             yappi.start()
             print("Time needed for " + str(n) + ": " + self.measure_speed_optimal_solution(n))
             yappi.stop()
@@ -91,6 +98,17 @@ class TestArrayHlt(unittest.TestCase):
             yappi.clear_stats()
         # print("time for 2: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 2)))
         # print("time for 3: ", timeit.timeit(geographic_utils.find_optimal_moves(self.start_gamemap, 3)))
+
+    def test_dijkstra_algo_start(self):
+        gamemap = self.give_some_map()
+        dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
+        dijkstra_map.calculate_scores(gamemap=gamemap)
+        a = 1 -1
+
+    def test_dijkstra_algo_start(self):
+        gamemap = self.give_some_map()
+        dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
+        dijkstra_map.calculate_scores(gamemap=gamemap)
 
     def dont_test_create_many_steps(self):
         optimal_moves, best_score = geographic_utils.find_optimal_moves(self.start_gamemap, 5)

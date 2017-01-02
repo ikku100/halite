@@ -1,6 +1,7 @@
 import random
 import time
 
+import array_geographic_utils
 import array_hlt
 from array_hlt import NORTH, EAST, SOUTH, WEST, STILL, Move, Square
 timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -20,21 +21,26 @@ def get_init():
     logFile.write("and first frame part 1:\n" + array_hlt.get_string())
 
 
+# get_init()
+# logFile.close()
+# raise ("stop maar")
 
-get_init()
+myID, gamemap = array_hlt.get_init()
 array_hlt.send_init(bot_name)
-logFile.close()
-raise ("stop maar")
+gamemap.set_logfile(logFile)
 
-myID, game_map = array_hlt.get_init()
-game_map.set_logfile(logFile)
-array_hlt.send_init(bot_name)
-
-
+turn = 0
 while True:
-    game_map.get_frame()
-    moves = [Move(square, random.choice((NORTH, EAST, SOUTH, WEST, STILL))) for square in game_map if square.owner == myID]
-    array_hlt.send_frame(moves)
+    turn  += 1
+    gamemap.get_frame()
+    gamemap.log("turn: " + str(turn))
+    dijkstra_map = array_geographic_utils.ScoringGeoMap(gamemap.width, gamemap.height)
+    dijkstra_map.calculate_scores(gamemap=gamemap)
+    moves = dijkstra_map.calculate_best_moves(gamemap)
+    gamemap.log(str(moves) + '\n')
+    moves = dijkstra_map.post_process_moves(gamemap, moves)
+    gamemap.log(str(moves) + '\n')
+    array_hlt.send_moves(moves)
 
 
 def never():

@@ -5,6 +5,17 @@ This module contains a Pythonic implementation of a Halite starter-bot framework
 In addition to a class (GameMap) containing all information about the game world
 and some helper methods, the module also imeplements the functions necessary for
 communicating with the Halite game environment.
+
+Strategy notes:
+How about finding a typical cost for making a move (kind of like 'lost production'/opportunity cost) = avg_step_cost
+Then using that in Dijkstra's algo for the cost of making a single step
+Also in a mod of Dijkstra, for a step into a new region, cost = avg_step_cost + str_target - prod_target
+And then compute the total prod gained using that path???
+Or just follow the path with lowest 'cost'?
+
+Do I compute this stuff for each of my nodes?? I guess I can do such a thing but then start using my boundary as
+starting point when I get too many nodes.
+
 """
 
 import sys
@@ -13,6 +24,7 @@ from itertools import chain, zip_longest
 import numpy
 import numpy as np
 import time
+import math
 
 def grouper(iterable, n, fillvalue=None):
     "Collect data into fixed-length chunks or blocks"
@@ -21,6 +33,7 @@ def grouper(iterable, n, fillvalue=None):
     return zip_longest(*args, fillvalue=fillvalue)
 
 Location = namedtuple('Location', 'y x')
+Move = namedtuple('Move', 'y x direction')
 # Range = namedtuple('Range', "x1 y1 x2 y2")
 
 # Because Python uses zero-based indexing, the cardinal directions have a different mapping in this Python starterbot
@@ -48,7 +61,14 @@ MoveSimple = namedtuple("MoveSimple", "location direction")
 class GameMap:
 
     def __init__(self):
-        pass
+        self.playerID = None
+        self.logfile = None
+        self.width = None
+        self.height = None
+        self.starting_player_count = None
+        self.prod = None
+        self.strength = None
+        self.owners = None
 
     @classmethod
     def make_gamemap_from_strings(cls, playerID, size_string, production_string, map_string=None):
@@ -119,7 +139,7 @@ class GameMap:
         self.strength = self.strength.reshape(self.height, self.width)
         # self.strength = np.ndarray.swapaxes(self.strength, 0, 1)
 
-    def neighbors(self, x, y, n=1, include_self=False):
+    def neighbours(self, x, y, n=1, include_self=False):
         "Iterable over the n-distance neighbors of a given square.  For single-step neighbors, the enumeration index provides the direction associated with the neighbor."
         assert isinstance(include_self, bool)
         assert isinstance(n, int) and n > 0
@@ -177,6 +197,9 @@ class GameMap:
         # return sum
         return sum(self.prod[self.owners == self.playerID])
 
+    def is_mine(self, square):
+        return self.owners[square] == self.playerID
+
     def get_new_coordinates(self, x, y, direction):
         if direction != STILL:
             if direction == NORTH:
@@ -228,6 +251,13 @@ class GameMap:
                 self.owners[new_y, new_x] = self.playerID
                 self.strength[y, x] = 0
 
+    def fog_of_war_distance(self):
+        total_area = self.height * self.width
+        my_area = total_area / self.starting_player_count
+        sides = int(math.sqrt(my_area))
+        return sides + sides - 1
+
+
 
 #####################################################################################################################
 # Functions for communicating with the Halite game environment (formerly contained in separate module networking.py #
@@ -245,7 +275,7 @@ def get_string():
 
 def get_init():
     playerID = int(get_string())
-    m = make_gamemap_from_strings(playerID, get_string(), get_string())
+    m = GameMap.make_gamemap_from_strings(playerID, get_string(), get_string())
     return playerID, m
 
 
@@ -263,6 +293,10 @@ def translate_cardinal(direction):
     # ~ [1, 2, 3, 4, 0]
     return (direction + 1) % 5
 
+
+def send_moves(moves):
+    send_string(' '.join(str(location[1]) + ' ' + str(location[0]) + ' ' + str(translate_cardinal(move))
+                         for location, move in moves))
 
 def send_frame(moves):
     send_string(' '.join(str(move.square.x) + ' ' + str(move.square.y) + ' ' + str(translate_cardinal(move.direction))

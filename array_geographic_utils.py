@@ -1,14 +1,14 @@
-import copy
 import itertools
 import math
 import time
-
+import numpy as np
 from array_hlt import NORTH, SOUTH, WEST, EAST, Move, STILL, Location, GameMap, MOVES, MOVES_STRINGS
+from enum import IntEnum
 
-# from ikku100_02 import gameMap, myID
-
+MAX_SMALL_INT = np.iinfo(np.int16).max
 timestr = time.strftime("%Y%m%d-%H%M%S")
 # logFile = open("geographic_utils_" + timestr + ".log", 'w')
+
 
 def getMoveAwayFromCenter(location, myX, myY):
     dX = myX - location.x
@@ -139,8 +139,6 @@ def find_optimal_moves_for_this_turn(start_game_map: GameMap):
         # print(game_map)
         score = game_map.my_total_production() + game_map.my_total_strength() * 0.5
         if score > max_score:
-            # print("found something better in end state:")
-            # print(game_map)
             best_moves = moves
             max_score = score
     return [best_moves], max_score
@@ -152,7 +150,7 @@ def find_optimal_moves(start_game_map, n_steps):
     max_score = 0
     best_moves = None
     for moves in create_all_next_moves(start_game_map.my_locations_list()):
-        game_map = start_game_map.__deepcopy__()#copy.deepcopy(start_game_map)
+        game_map = start_game_map.__deepcopy__()  # copy.deepcopy(start_game_map)
         # game_map = copy.deepcopy(start_game_map)
         # print(game_map)
         game_map.evolve_assuming_no_enemy(moves)
@@ -173,9 +171,127 @@ def moves_multiple_turns_to_string(moves_per_turn):
     return result
 
 
+def nearest_empty_fields(gamemap):
+    res = set()
+    my_locations = gamemap.my_locations_list()
+    for my_field in my_locations:
+        neighbours = gamemap.neighbours(my_field.x, my_field.y, n=1)
+        for neighbour in neighbours:
+            if neighbour not in my_locations:
+                res.add(neighbour)
+    return res
+
+
+class ScoringGeoMap:
+    class Status(IntEnum):
+        INNER_TERRITORY = 0
+        MY_BOUNDARY = 1
+        NEW_BOUNDARY = 2
+        OLD_BOUNDARY = 3
+        DONE = 4
+        UNKNOWN = 999
+
+    def __init__(self, width, height):
+        self.prod_to_str_ratio = 5
+        self.score = np.zeros((height, width), dtype=np.int16)
+        self.step_distances = np.full((height, width), MAX_SMALL_INT, dtype=np.int16)
+        # self.square_stati = np.full((height, width), "unknown", dtype=np.dtype(np.str_, 8))
+        self.square_stati = np.full((height, width), self.Status.UNKNOWN, dtype=np.int16)
+
+    def mark_borders_and_get_potential_territory(self, gamemap: GameMap):
+        grow_from_to_squares = []
+        for square in gamemap.my_locations_list():
+            # for neighbour in gamemap.neighbours(square[0], square[1]):
+            for move in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+                # [(y + dy) % self.height][(x + dx) % self.width]
+                neighbour = ((square[0] + move[0]) % gamemap.height, (square[1] + move[1]) % gamemap.width)
+                if not gamemap.is_mine(neighbour):
+                    grow_from_to_squares.append((square, neighbour))
+                    self.step_distances[square] = 0
+                    self.square_stati[square] = self.Status.MY_BOUNDARY
+                    self.square_stati[neighbour] = self.Status.NEW_BOUNDARY
+        return grow_from_to_squares
+
+    def get_next_potential_neighbours(self, gamemap: GameMap):
+        self.square_stati[self.square_stati == self.Status.OLD_BOUNDARY] = self.Status.DONE
+        self.square_stati[self.square_stati == self.Status.NEW_BOUNDARY] = self.Status.OLD_BOUNDARY
+        grow_from_to_squares = []
+        for square in np.argwhere(self.square_stati == self.Status.OLD_BOUNDARY):
+            for move in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+                neighbour = ((square[0] + move[0]) % gamemap.height, (square[1] + move[1]) % gamemap.width)
+                if not gamemap.is_mine(neighbour) and \
+                        (self.square_stati[neighbour] == self.Status.UNKNOWN
+                         or self.square_stati[neighbour] == self.Status.NEW_BOUNDARY):
+                    grow_from_to_squares.append((tuple(square), neighbour))
+                    self.square_stati[neighbour] = self.Status.NEW_BOUNDARY
+        return grow_from_to_squares
+
+    def calculate_scores(self, gamemap: GameMap, cost_moving=1):
+        """"First round give all squares a score based on nearest neighbour.
+            Second round update all squares with best score of next nearest neighbour
+            Do this a couple of times?
+        """
+        self.step_distances[gamemap.owners == gamemap.playerID] = 9999
+        grow_from_to_squares = self.mark_borders_and_get_potential_territory(gamemap)
+        while len(grow_from_to_squares) > 0:
+            for from_to_sq in grow_from_to_squares:
+                from_sq, to_sq = from_to_sq
+                self.step_distances[to_sq] = min(self.step_distances[from_sq] + 1, self.step_distances[to_sq])
+                self.score[from_sq] += self.prod_to_str_ratio * gamemap.prod[to_sq] - gamemap.strength[to_sq]
+                self.square_stati[to_sq] = self.Status.NEW_BOUNDARY
+                self.square_stati[from_sq] = self.Status.DONE
+            grow_from_to_squares = self.get_next_potential_neighbours(gamemap)
+
+        # Now get the best scores going from outside to inside
+        self.update_scores_from_out_to_inside(gamemap)
+
+    def update_scores_from_out_to_inside(self, gamemap: GameMap):
+        max_distance = np.amax(self.step_distances)
+        max_distance = gamemap.fog_of_war_distance()
+        for distance in range (max_distance - 1, 0, -1): # skip first outer layer as that doesn't have a NEXT nearest n.
+            # from_squares = np.argwhere(self.step_distances == distance)
+            from_squares = np.where(self.step_distances == distance)
+            for square in zip(*from_squares):
+                optimal_score = -9999
+                for move in [(0, -1), (1, 0), (0, 1), (-1, 0)]:
+                    neighbour = ((square[0] + move[0]) % gamemap.height, (square[1] + move[1]) % gamemap.width)
+                    if self.step_distances[neighbour] == distance + 1:
+                        if self.score[neighbour] > optimal_score:
+                            optimal_score = self.score[neighbour]
+                self.score[square] += np.int16(0.5 * optimal_score)
+
+    def calculate_best_moves(self, gamemap: GameMap):
+        moves = []
+        for square in gamemap.my_locations_list():
+            best_move = STILL
+            optimal_score = -9999
+            for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
+                neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
+                if self.score[neighbour] > optimal_score and gamemap.strength[square] >= gamemap.strength[neighbour]:
+                    # only move if target has better score or target isn't mine
+                    if gamemap.owners[neighbour] != gamemap.playerID or self.score[square] < self.score[neighbour]:
+                        optimal_score = self.score[neighbour]
+                        best_move = move
+                        gamemap.log("updating best move to score " +
+                                    str(optimal_score) + ", move: " + MOVES_STRINGS[move] + '\n')
+            moves.append((square, best_move))
+        return moves
+
+    def post_process_moves(self, gamemap, moves):
+        # find if its useful at all to move:
+        # if the target site has more str than my total str, don't bother
+        # what's the target site??
+        minimum_target_str = min(gamemap.strength[self.step_distances == 1])
+        gamemap.log("minimum_target_str = " + str(minimum_target_str) + '\n')
+        if minimum_target_str < gamemap.my_total_strength():
+            return moves
+        else:
+            return [(location, STILL) for location, move in moves]
+
+
 def play_my_moves(game_map, moves_per_turn):
     turn = 0
-    print ("Turn " + str(turn))
+    print("Turn " + str(turn))
     print(game_map)
     for moves in moves_per_turn:
         turn += 1
