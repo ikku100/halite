@@ -273,6 +273,9 @@ class ScoringGeoMap:
         num_my_location = len(my_locations_list)
         for square in my_locations_list:
             my_str = gamemap.strength[square]
+            if my_str <= 0:
+                moves.append((square, STILL))
+                continue
             best_move = STILL
             optimal_score = -9999
             for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
