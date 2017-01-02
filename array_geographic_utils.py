@@ -282,7 +282,7 @@ class ScoringGeoMap:
                 neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
                 # do inner area differently, but only if strength is less than half the max (if bigger, just gogo!)
                 # also check for insignificance str of this square (compare it to average str)
-                if self.step_distances[square] < 0 and my_str < 256/2 and my_str < my_total_str / my_locations_list:
+                if self.step_distances[square] < 0 and my_str < 256/2 and my_str < my_total_str / num_my_location:
                     pass # for now just don't do anything
                 elif self.score[neighbour] > optimal_score and my_str >= gamemap.strength[neighbour]:
                     # only move if target has better score or target isn't mine

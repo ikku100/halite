@@ -28,8 +28,8 @@
       <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="275" column="27" lean-forward="true" selection-start-line="275" selection-start-column="27" selection-end-line="275" selection-end-column="27" />
+            <state relative-caret-position="366">
+              <caret line="284" column="113" lean-forward="false" selection-start-line="284" selection-start-column="113" selection-end-line="284" selection-end-column="113" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <element signature="e#382#1035#0" expanded="false" />
@@ -582,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483379475003</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="skip moves with str==0">
+      <created>1483379665883</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1483379665883</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -690,7 +697,8 @@
     <MESSAGE value="Scoring works. Best moves works and filters moves too.&#10;It can now win from silly bots. Time for a submit." />
     <MESSAGE value="Scoring inner area now too" />
     <MESSAGE value="Inner area not doing anything if:                 if self.step_distances[square] &lt; 0 and my_str &lt; 256/2 and my_str &lt; my_total_str / my_locations_list:&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inner area not doing anything if:                 if self.step_distances[square] &lt; 0 and my_str &lt; 256/2 and my_str &lt; my_total_str / my_locations_list:&#10;" />
+    <MESSAGE value="skip moves with str==0" />
+    <option name="LAST_COMMIT_MESSAGE" value="skip moves with str==0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1309,8 +1317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="275" column="27" lean-forward="true" selection-start-line="275" selection-start-column="27" selection-end-line="275" selection-end-column="27" />
+        <state relative-caret-position="366">
+          <caret line="284" column="113" lean-forward="false" selection-start-line="284" selection-start-column="113" selection-end-line="284" selection-end-column="113" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <element signature="e#382#1035#0" expanded="false" />
