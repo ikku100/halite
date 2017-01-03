@@ -114,6 +114,9 @@ class GameMap:
     def log(self, obj):
         self.logfile.write(str(obj))
 
+    def log_myself(self):
+        self.log(str(self))
+
     def set_logfile(self, logfile):
         self.logfile = logfile
 

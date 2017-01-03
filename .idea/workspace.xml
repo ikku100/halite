@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddd67844-cdd3-4dbe-ad14-4e17bba124d3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/create_submission.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyBot.py" afterPath="$PROJECT_DIR$/MyBot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_geographic_utils.py" afterPath="$PROJECT_DIR$/array_geographic_utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_hlt.py" afterPath="$PROJECT_DIR$/array_hlt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_array_hlt.py" afterPath="$PROJECT_DIR$/test_array_hlt.py" />
     </list>
     <ignored path="halite.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="array_geographic_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="372" column="24" lean-forward="false" selection-start-line="372" selection-start-column="24" selection-end-line="372" selection-end-column="24" />
+            <state relative-caret-position="355">
+              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <element signature="e#384#1037#0" expanded="false" />
@@ -57,6 +56,16 @@
                 <element signature="e#6191#6340#0" expanded="false" />
                 <element signature="e#6243#6322#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_submission.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/create_submission.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,11 +142,11 @@
         <entry file="file://$PROJECT_DIR$/array_hlt.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="117" column="13" lean-forward="false" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
+              <caret line="77" column="13" lean-forward="false" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
               <folding>
                 <element signature="e#917#927#0" expanded="true" />
-                <element signature="e#7921#8569#0" expanded="false" />
-                <element signature="e#8634#8789#0" expanded="false" />
+                <element signature="e#7976#8624#0" expanded="false" />
+                <element signature="e#8689#8844#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -247,9 +256,10 @@
         <option value="$PROJECT_DIR$/ikku100_04.py" />
         <option value="$PROJECT_DIR$/runGame.bat" />
         <option value="$PROJECT_DIR$/test_array_hlt.py" />
-        <option value="$PROJECT_DIR$/array_hlt.py" />
         <option value="$PROJECT_DIR$/MyBot.py" />
+        <option value="$PROJECT_DIR$/array_hlt.py" />
         <option value="$PROJECT_DIR$/array_geographic_utils.py" />
+        <option value="$PROJECT_DIR$/create_submission.py" />
       </list>
     </option>
   </component>
@@ -682,7 +692,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483379788693</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Taking into account enemies (giving extra points for enemy squares)">
+      <created>1483401456935</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1483401456935</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -730,7 +747,7 @@
     <frame x="-7" y="2" width="1859" height="1085" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25176343" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25176343" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -792,7 +809,8 @@
     <MESSAGE value="Inner area not doing anything if:                 if self.step_distances[square] &lt; 0 and my_str &lt; 256/2 and my_str &lt; my_total_str / my_locations_list:&#10;" />
     <MESSAGE value="skip moves with str==0" />
     <MESSAGE value="bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
+    <MESSAGE value="Taking into account enemies (giving extra points for enemy squares)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Taking into account enemies (giving extra points for enemy squares)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -856,17 +874,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/-1094446064/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63529">
-          <caret line="3737" column="8" lean-forward="false" selection-start-line="3737" selection-start-column="8" selection-end-line="3737" selection-end-column="8" />
-          <folding>
-            <element signature="e#124708#125720#0" expanded="false" />
-            <element signature="e#125140#125144#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hlt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1313,18 +1320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/array_hlt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="117" column="13" lean-forward="false" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
-          <folding>
-            <element signature="e#917#927#0" expanded="true" />
-            <element signature="e#7921#8569#0" expanded="false" />
-            <element signature="e#8634#8789#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/5array_hlt20170102-230531.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1413,10 +1408,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/array_hlt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="77" column="13" lean-forward="false" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+          <folding>
+            <element signature="e#917#927#0" expanded="true" />
+            <element signature="e#7976#8624#0" expanded="false" />
+            <element signature="e#8689#8844#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/array_geographic_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="372" column="24" lean-forward="false" selection-start-line="372" selection-start-column="24" selection-end-line="372" selection-end-column="24" />
+        <state relative-caret-position="355">
+          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <element signature="e#384#1037#0" expanded="false" />
@@ -1441,6 +1448,14 @@
             <element signature="e#6191#6340#0" expanded="false" />
             <element signature="e#6243#6322#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create_submission.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -300,6 +300,34 @@ class ScoringGeoMap:
                 moves.append((square, STILL))
                 continue
 
+            if my_str > 256 / 2:
+                best_move = STILL
+                optimal_score = -9999
+                for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
+                    neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
+                    # moving outward? if yes, then check for scores
+                    if (self.step_distances[neighbour] > self.step_distances[square] \
+                            and self.score[neighbour] > optimal_score
+                            and my_str >= gamemap.strength[neighbour]):
+                        # moving outward, great!
+                        gamemap.log("finding move for strong square")
+                        best_move = move
+                        optimal_score = self.score[neighbour]
+
+                if best_move == STILL:
+                    gamemap.log("\nwtf. best move not yet found!\n")
+                    gamemap.log_myself()
+                    optimal_score = -9999
+                    for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
+                        neighbour = ((square[0] + step[0]) % gamemap.height, (square[1] + step[1]) % gamemap.width)
+                        # moving outward? if yes, then check for scores
+                        if self.step_distances[neighbour] > self.step_distances[square] and self.score[neighbour] > optimal_score:
+                            # moving outward, great!
+                            best_move = move
+                            optimal_score = self.score[neighbour]
+                moves.append((square, best_move))
+                continue
+
             best_move = STILL
             optimal_score = -9999
             for step, move in zip([(0, -1), (1, 0), (0, 1), (-1, 0)], [WEST, SOUTH, EAST, NORTH]):
@@ -377,7 +405,7 @@ class ScoringGeoMap:
             for origin_move in origins_and_moves:
                 origin, move = origin_move
                 my_str = gamemap_original.strength[origin]
-                if my_str > 255 - gamemap.prod[origin]:
+                if my_str > 255 - gamemap.prod[origin]:  # TODO this doesn't work. Make something that maybe moves OUTWARD instead, when str is high? Now high str squares collide...
                     continue
                 if my_str > max_str: # TODO make it better: if two sites move unto one, and both would have breached 255
                     # then obviously BOTH should have moved somewhere else/stand still!
