@@ -97,6 +97,7 @@ class GameMap:
     def __copy__(self):
         newone = type(self)()
         newone.playerID = self.playerID
+        newone.starting_player_count = self.starting_player_count
         newone.logfile = self.logfile
         newone.width = self.width
         newone.height = self.height

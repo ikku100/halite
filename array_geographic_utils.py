@@ -43,26 +43,6 @@ def moveAwayFromCenterUsingDistance(location, myX, myY, dX, dY):
     else:
         return EAST if dX > 0 else WEST
 
-
-def createMove(gameMap, location, site, myX, myY):
-    # logFile.write("\nmove (" + str(location.x) + ", " + str(location.y) + ").\t")
-    # logFile.write(xYToString(*distanceToCenter(location, myX, myY)))
-    # logFile.write("moveAwayFromCenterUsingDistance:" + MOVES_STRINGS[moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))])
-    # for d in CARDINALS:
-    #     neighbour_site = gameMap.getSite(location, d)
-    #     if neighbour_site.owner != myID and neighbour_site.strength < site.strength:
-    #         return Move(location, d)
-    if site.strength < site.production * 5:
-        return Move(location, STILL)
-
-    # moveAwayFromCenter = getMoveAwayFromCenter(location, myX, myY)
-    moveAwayFromCenter = moveAwayFromCenterUsingDistance(location, myX, myY, *distanceToCenter(location, myX, myY))
-    targetSite = gameMap.getSite(location, moveAwayFromCenter)
-    if targetSite.strength < site.strength:
-        return Move(location, moveAwayFromCenter)
-    return Move(location, STILL)
-
-
 def distanceToCenter(location, myX, myY):
     dX = myX - location.x
     dXInv = location.x - myX
@@ -71,10 +51,6 @@ def distanceToCenter(location, myX, myY):
     dYInv = myY - location.y
     realDY = dY if abs(dYInv) < abs(dY) else dYInv
     return realDX, realDY
-
-
-def distance(a, b):
-    return math.sqrt((a.y - b.y) * (a.y - b.y) + (a.x - b.x) * (a.x - b.x))
 
 
 def myCenter(gameMap, myID):
@@ -193,8 +169,8 @@ class ScoringGeoMap:
         DONE = 4
         UNKNOWN = 999
 
-    def __init__(self, width, height):
-        self.prod_to_str_ratio = 5
+    def __init__(self, width, height, prod_to_str_ratio=5):
+        self.prod_to_str_ratio = prod_to_str_ratio
         self.score = np.zeros((height, width), dtype=np.int16)
         self.step_distances = np.full((height, width), MAX_SMALL_INT, dtype=np.int16)
         # self.square_stati = np.full((height, width), "unknown", dtype=np.dtype(np.str_, 8))
